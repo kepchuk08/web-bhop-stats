@@ -73,7 +73,7 @@
                 <img src="/public/img/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
             </div>
             <div class="col-12 col-lg-6 footer-logo2">
-                <span><a href="https://github.com/kepchuk08/bhop-web-stats/">Bhop Stats</a> <i>v1.0</i> Developed by <a href="">kepchuk</a> © <?php echo date('Y'); ?></span>
+                <span><a href="https://github.com/kepchuk08/web-bhop-stats/">Bhop Stats</a> <i>v1.0</i> Developed by <a href="">kepchuk</a> © <?php echo date('Y'); ?></span>
             </div>
         </div>
     </div>
