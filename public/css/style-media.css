@@ -1,0 +1,11 @@
+@media (max-width: 576px) {
+	.block-info {
+		font-size: 0.8em!important;
+	}
+	.search {
+		display: none;
+	}
+	.footer-logo2 {
+		text-align: left;
+	}
+}
