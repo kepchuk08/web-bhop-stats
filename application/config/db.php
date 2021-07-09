@@ -6,9 +6,9 @@
  */
 
 return [
-	'host' => 'localhost',
-	'dbname' => 'bh',
-	'user' => 'bh',
-	'password' => 'gD8sO3rT1ghK7f',
-	'steamkey' => 'DC78881ABDF77C37D91BEB3030F3350F'
+	'host' => '',
+	'dbname' => '',
+	'user' => '',
+	'password' => '',
+	'steamkey' => ''
 ];

@@ -30,7 +30,7 @@
 								<th scope="col">Стиль</th>
 								<th scope="col">Прыжков</th>
 								<th scope="col">Стрейфов</th>
-								<th scope="col">Сенса</th>
+								<th scope="col">Синх.</th>
 								<th scope="col">Очков</th>
 							</tr>
 						</thead>
@@ -40,18 +40,16 @@
 								<tr>
 									<td><?php echo $allrecordsItem['map'];?></td>
 									<td><?php echo $sistem->corectDate($allrecordsItem['date']);?></td>
-									<td><?php echo $allrecordsItem['time'];?>c</td>
+									<td><?php echo $sistem->secToStr(round($allrecordsItem['time']));?></td>
 									<td><?php echo $track[$allrecordsItem['track']];?></td>
 									<td><?php echo $style[$allrecordsItem['style']];?></td>
 									<td><?php echo $allrecordsItem['jumps'];?></td>
 									<td><?php echo $allrecordsItem['strafes'];?></td>
-									<td><?php echo $allrecordsItem['sync'];?></td>
+									<td><?php echo $allrecordsItem['sync'];?>%</td>
 									<td><?php echo $allrecordsItem['points'];?></td>
-									
 								</tr>
 							<?php endforeach;?>
 						</tbody>
-
 					</table>
 				</div>
 			</div>

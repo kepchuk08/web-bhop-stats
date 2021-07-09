@@ -1,11 +1,13 @@
 <div class="row content">
 	<div class="table-home bg-white">
-		<p>ТОП ИГРОКИ</p>
+		<p>Поиск по запросу: <b><?php echo $search;?></b></p>
+		<?php if (empty($user)): ?>
+			<h1>Игрок не найден</h1>
+		<?php else: ?>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
 					<tr>
-						<th scope="col">#</th>
 						<th scope="col">Ник</th>
 						<th scope="col">Страна</th>
 						<th scope="col">Последнее посящение</th>
@@ -15,9 +17,8 @@
 					</tr>
 				</thead>
 				<tbody class="table-tr">
-					<?php foreach ($users as $userItem):?>
+					<?php foreach ($user as $userItem):?>
 					    <tr>
-							<th scope="row"><?php echo $id; ?></th>
 							<td><?php echo $userItem['name']; ?></td>
 							<td><img src="/public/img/flags/<?php echo mb_strtolower($sxgeo->getCountry($userItem['ip']));?>.png"></td>
 							<td><?php echo $sistem->corectDate($userItem['lastlogin']) ;?></td>
@@ -25,11 +26,10 @@
 							<td><?php echo round($userItem['points']) ;?></td>
 					        <td><span class="user-about"><a href="/user/<?php echo $userItem['auth']; ?>">Подробнее</a></span></td>
 					    </tr>
-					    <?php $id++;?>
 					<?php endforeach;?>
 				</tbody>
 			</table>
 		</div>
+		<?php endif; ?>
 	</div>
-	<?php echo $pagination; ?>
 </div>

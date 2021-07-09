@@ -4,8 +4,28 @@ body {
 a {
 	text-decoration: none;
 }
+
+.pd-20 {
+	padding: 20px;
+}
+.pd-5 {
+	padding: 15px;
+}
 .text-color-green {
 	color: #186f64;
+}
+.table-a {
+	background-color: #fff;
+	padding: 2px 5px;
+	color: #186f64;
+	border-radius: 5px;
+}
+.text-color-112365 {
+	color: #112365;
+}
+
+.background-color-212529 {
+	background-color: #212529;
 }
 
 .indent {
@@ -240,4 +260,112 @@ a {
 
 .fs-12 i{
 	font-size: 1em!importnat;
+}
+
+.form-search {
+	padding-left: 20px;
+}
+
+.form-search select{
+    padding: .75rem 2.5rem .75rem 1rem;
+    background: none;
+    border: none;
+    outline:0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 1rem;
+    color: #fff;
+
+}
+
+.form-search select:hover {
+	background: #186f64;
+	border-radius: 20px 0 0 20px;
+	cursor: pointer;
+	color: #fff;
+}
+ .form-search select:after {
+    content: "";
+    display: block;
+
+    border-radius: 20px 0 0 20px;
+    border: none;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    z-index: 1;
+    margin-top: -3px;
+}
+
+.form-search input{
+	width: 100%;
+    padding: .75rem 1.4rem;
+    border: none;
+    outline:0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 1rem;
+    color: #212529;
+
+}
+
+.form-search button{
+    padding: .75rem 1.2rem;
+    background: #186f64;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    outline:0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 1rem;
+    color: #fff;
+
+}
+
+.col-pd-0{
+	padding-left: 0; 
+	padding-right:0;
+}
+.block-map-info{
+	padding: 10px;
+}
+.block-inform {
+	background-color: #212529;
+	border-radius: 10px;
+	padding: 10px;
+	color: #fff;
+}
+
+.block-inform span{
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+	color: #fff;
+
+}
+
+
+
+.value-info {
+	display: inherit;
+	height: 0;
+	width: 10px;
+	border-bottom: 10px solid #186f64;
+	border-left: 10px solid transparent;
+}
+
+.search-btn {
+	border-radius: 10px 0 0 10px!importnat;
+}
+
+.list-group-item.active {
+	background-color: #186f64;
+}
+
+.pagination {
+	margin-top: 10px!importnat;
 }

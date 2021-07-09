@@ -68,30 +68,6 @@ class User extends Model
 	public function style() {
 		$style = [
 				0 => 'Prespeed', //0
-				1 => 'Normal', //1
-				2 => 'Low Grav', //2
-				3 => 'Slow motion', //3
-				4 => 'W only', //4
-				5 => 'A only', //5
-				6 => 'D only', //6
-				7 => 'Sideways', //7
-				8 => 'Half-Sideways', //8
-				9 => 'Scroll', //9
-				10 => '300 CAP', //10
-				11 => '400 vel', //11
-				12 => 'Speedrun', //12
-				15 => 'Unreal', //14
-				15 => 'Prespeed SEG', //15
-				16 => 'Normal SEG', //16
-				17 => 'Low Grav SEG', //17
-				18 => 'Slow motion SEG', //18
-				22 => 'Sideways SEG', //22
-				27 => 'Speedrun SEG', //27
-				30 => 'TAS', //30
-				31 => 'Parkour',
-				13 => 'Стиль выкл.',//31
-				28 => 'Стиль выкл.',//31
-				14 => 'Стиль выкл.',//31
 			];
 
 		return $style;

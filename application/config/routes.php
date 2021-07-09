@@ -31,5 +31,21 @@ return [
 		'controller' => 'user',
 		'action' => 'allstyle',
 	],
+	'maps' => [
+		'controller' => 'maps',
+		'action' => 'index',
+	],
+	'maps/{map:\w+}' => [
+		'controller' => 'maps',
+		'action' => 'mapinfo',
+	],
+	'maps/{map:\w+}/allrecords' => [
+		'controller' => 'maps',
+		'action' => 'allracords',
+	],
+	'search/{value:[А-Яа-я\w:\%\[\]\./]+}' => [
+		'controller' => 'main',
+		'action' => 'search',
+	],
 
 ];

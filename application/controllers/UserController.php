@@ -17,6 +17,7 @@ class UserController extends Controller
 	public function indexAction(){
 		$mainModel = new Main;
 		$SteamAPI = new SteamAPI;
+		$sistem = new Sistem;
 		$vars = [
 			'data' => $this->model->getUser($this->route['auth']),
 			'statisticServer' => $mainModel->statisticServer(),
@@ -28,6 +29,7 @@ class UserController extends Controller
 			'style' => $this->model->style(),
 			'lastrecords' => $this->model->lastRecords($this->route['auth']),
 			'nosteam' => $this->model->noSteam($this->route['auth']),
+			'sistem' => $sistem,
 		];
 		
 		$this->view->render('Пользователь',$vars);

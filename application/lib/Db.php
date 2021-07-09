@@ -13,16 +13,12 @@ class Db
 	
 	protected $db;
 
-
 	public function __construct()
 	{
 		$result = require 'application/config/db.php';
 		$this->db = new PDO('mysql:host='.$result['host'].';dbname='.$result['dbname'].'', $result['user'], $result['password']);
 
 	}
-
-
-
 
 	public function query($sql, $params = []){
 		$stmt = $this->db->prepare($sql);
@@ -55,9 +51,4 @@ class Db
 		$result = $this->query($sql, $params);
 		return $result->fetchColumn();
 	}
-
-	
-
-
-
 }

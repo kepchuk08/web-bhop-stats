@@ -41,27 +41,6 @@ class Main extends Model
 		return $resultArray;
 	}
 
-	public function getMaps(){
-		$result = $this->db->column("SELECT COUNT(DISTINCT map) FROM mapzones");
-
-		return $result;
-	}
-	public function getTrackBonus(){
-		$result = $this->db->column("SELECT COUNT(*) FROM playertimes WHERE track = 1");
-
-		return $result;
-	}
-	public function getTrackBase(){
-		$result = $this->db->column("SELECT COUNT(*) FROM playertimes WHERE track = 0");
-
-		return $result;
-	}
-	public function getRecords(){
-		$result = $this->db->column("SELECT COUNT(*) FROM playertimes");
-
-		return $result;
-	}
-
 	public function userCount() {
 		return $this->db->column('SELECT COUNT(auth) FROM users');
 	}
@@ -72,10 +51,74 @@ class Main extends Model
 		return $result;
 	}
 
-	
+	public function search($id){
+		$SteamAPI = new SteamAPI;
+		if (preg_match('/^STEAM_[0-1]:([0-1]):([0-9]+)$/', $id)) {
+			$parts = explode(':', $id);
+			$a = $parts[2] * 2 + $parts[1];
+			$params = [
+				'auth' => $a,
+			];
+			$result = $this->db->row("SELECT * FROM users WHERE auth = :auth", $params);
 
+			return $result;
 
+		}elseif(preg_match('/^\[U:1:([0-9]+)\]$/', $id)){
+			$parts = explode(':', $id);
+			$a = $parts[2];
+			$params = [
+				'auth' => $a,
+			];
+			$result = $this->db->row("SELECT * FROM users WHERE auth = :auth", $params);
 
+			return $result;
+
+		}elseif(preg_match('/^(?:https?:\/\/)?(?:www.)?steamcommunity.com\/id\/([a-zA-Z0-9_-]{2,})\/*$/', $id, $matches)){
+			$valid = $SteamAPI->ConvertVanityURL($matches[1]);
+			if ($valid["success"] == 1) {
+				$steam = $SteamAPI->st64to32($valid["steamid"]);
+				$parts = explode(':', $steam);
+				$a = $parts[2] * 2 + $parts[1];
+				$params = [
+					'auth' => $a,
+				];
+				$result = $this->db->row("SELECT * FROM users WHERE auth = :auth", $params);
+			}
+
+			return $result;
+
+		}elseif(preg_match('/^(?:https?:\/\/)?(?:www.)?steamcommunity.com\/profiles\/([0-9]+)\/*$/', $id, $matches)){
+			$steam = $SteamAPI->st64to32($matches[1]);
+			$parts = explode(':', $steam);
+				$a = $parts[2] * 2 + $parts[1];
+			$params = [
+				'auth' => $a,
+			];
+			$result = $this->db->row("SELECT * FROM users WHERE auth = :auth", $params);
+
+			return $result;
+
+		}else{
+			if (!preg_match('/[%20]+/', $id)) {
+				$params = [
+					'name' => $id,
+				];
+				$result = $this->db->row("SELECT * FROM users WHERE name = :name", $params);
+			}else{
+				$id = preg_replace('/[%20]+/', ' ', $id);
+				$id = rawurldecode($id);
+				$params = [
+					'name' => $id,
+				];
+				$result = $this->db->row("SELECT * FROM users WHERE name LIKE :name", $params);
+			}
+			
+			
+
+			return $result;
+
+		}
+	}
 }
 
 

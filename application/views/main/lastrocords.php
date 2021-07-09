@@ -13,17 +13,17 @@
 						<th scope="col">Стиль</th>
 						<th scope="col">Прыжков</th>
 						<th scope="col">Стрейфов</th>
-						<th scope="col">Сенса</th>
+						<th scope="col">Синх.</th>
 						<th scope="col">Очков</th>
 					</tr>
 				</thead>
 				<tbody class="table-tr">
 					<?php foreach ($lastrecords as $lastrecordsItem):?>
 					    <tr>
-					    	<td><?php echo $sistem->userName($lastrecordsItem['auth']);?></td>
-					        <td><?php echo $lastrecordsItem['map'];?></td>
+					    	<td><a class="table-a" href="user/<?php echo $lastrecordsItem['auth'];?>"><?php echo $sistem->userName($lastrecordsItem['auth']);?></a></td>
+					        <td><a class="table-a" href="maps/<?php echo $lastrecordsItem['map'];?>"><?php echo $lastrecordsItem['map'];?></a></td>
 							<td><?php echo $sistem->corectDate($lastrecordsItem['date']);?></td>
-							<td><?php echo $lastrecordsItem['time'];?>c</td>
+							<td><?php echo $sistem->secToStr(round($lastrecordsItem['time']));?></td>
 							<td><?php echo $track[$lastrecordsItem['track']];?></td>
 							<td><?php echo $style[$lastrecordsItem['style']];?></td>
 							<td><?php echo $lastrecordsItem['jumps'];?></td>
@@ -37,9 +37,3 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-

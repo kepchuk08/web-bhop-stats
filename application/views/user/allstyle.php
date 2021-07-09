@@ -19,7 +19,6 @@
 		    <div class="col-12 col-lg-10 indent section_last">
 		    	<span>Рекорды на стиле <?php echo $style[$this->route['style']];?></span>
 	      		<div class="table-responsive font-300">
-
 					<table class="table">
 						<thead>
 							<tr>
@@ -33,23 +32,20 @@
 								<th scope="col">Очков</th>
 							</tr>
 						</thead>
-
 						<tbody class="table-tr">
 							<?php foreach ($allrecords as $allrecordsItem):?>
 								<tr>
 									<td><?php echo $allrecordsItem['map'];?></td>
 									<td><?php echo $sistem->corectDate($allrecordsItem['date']);?></td>
-									<td><?php echo $allrecordsItem['time'];?>c</td>
+									<td><?php echo $sistem->secToStr(round($allrecordsItem['time']));?></td>
 									<td><?php echo $track[$allrecordsItem['track']];?></td>
 									<td><?php echo $allrecordsItem['jumps'];?></td>
 									<td><?php echo $allrecordsItem['strafes'];?></td>
 									<td><?php echo $allrecordsItem['sync'];?></td>
 									<td><?php echo $allrecordsItem['points'];?></td>
-									
 								</tr>
 							<?php endforeach;?>
 						</tbody>
-
 					</table>
 				</div>
 			</div>

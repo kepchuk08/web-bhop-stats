@@ -11,11 +11,17 @@ use application\core\Controller;
 use application\lib\Sistem;
 use application\lib\Pagination;
 use application\lib\SxGeo;
+use application\lib\SteamAPI;
 use application\models\User;
+
 
 class MainController extends Controller
 {
 	public function indexAction(){
+		if (!empty($_POST)) {
+			$url = 'search/'.$_POST['name'];
+			$this->view->location($url);
+		}
 		$id = 1;
 		if (!isset($this->route['page'])) {
 			$page = 1;
@@ -50,8 +56,21 @@ class MainController extends Controller
 			'track' => $User->track(),
 		];
 
-		$this->view->render('Поиск',$vars);
+		$this->view->render('Последние рекорды',$vars);
+	}
 
+	public function searchAction(){
+		$SxGeo = new SxGeo('application/lib/SxGeo.dat', SXGEO_BATCH | SXGEO_MEMORY); 
+		$search = $this->route['value'];
+		$sistem = new Sistem;
+		$vars = [
+			'search' => rawurldecode($search),
+			'user' => $this->model->search(rawurldecode($search)),
+			'sistem' => $sistem,
+			'statisticServer' => $this->model->statisticServer(),
+			'sxgeo' => $SxGeo,
+		];
 
+		$this->view->render('Поиск игрока',$vars);
 	}
 }
