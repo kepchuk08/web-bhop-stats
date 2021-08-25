@@ -97,6 +97,7 @@ class Admin extends Model
 		    }
 		}
 	}
+	
 	public function addStyle($post)
 	{
 		$json_file = 'application/config/config.json';

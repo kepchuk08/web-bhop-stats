@@ -42,41 +42,6 @@
 				</div>
 			</div>
 			<div class="col-12 col-lg-9 pd-20">
-<<<<<<< Updated upstream
-				<span>Все рекорды</span>
-	      		<div class="table-responsive font-300">
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col">Игрок</th>
-								<th scope="col">Дата</th>
-								<th scope="col">Время</th>
-								<th scope="col">Путь</th>
-								<th scope="col">Стиль</th>
-								<th scope="col">Прыжков</th>
-								<th scope="col">Стрейфов</th>
-								<th scope="col">Синх.</th>
-								<th scope="col">Очков</th>
-							</tr>
-						</thead>
-						<tbody class="table-tr">
-							<?php foreach ($records as $recordsItem):?>
-								<tr>
-									<td><?php echo $sistem->userName($recordsItem['auth']);?></td>
-									<td><?php echo $sistem->corectDate($recordsItem['date']);?></td>
-									<td><?php echo $sistem->secToStr(round($recordsItem['time']));?></td>
-									<td><?php echo $track[$recordsItem['track']];?></td>
-									<td><?php echo $style[$recordsItem['style']];?></td>
-									<td><?php echo $recordsItem['jumps'];?></td>
-									<td><?php echo $recordsItem['strafes'];?></td>
-									<td><?php echo $recordsItem['sync'];?>%</td>
-									<td><?php echo $recordsItem['points'];?></td>
-								</tr>
-							<?php endforeach;?>
-						</tbody>
-					</table>
-				</div>
-=======
 				<div class="row">
 					<div class="col-12">
 						<div class="row justify-content-between">
@@ -171,7 +136,6 @@
 				
 		    	
 	      		
->>>>>>> Stashed changes
 			</div>
 		</div>
 	</div>

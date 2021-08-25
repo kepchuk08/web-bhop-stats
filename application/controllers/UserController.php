@@ -17,14 +17,9 @@ class UserController extends Controller
 	public function indexAction()
 	{
 		$mainModel = new Main;
-<<<<<<< Updated upstream
-		$SteamAPI = new SteamAPI;
-		$sistem = new Sistem;
-=======
 		$SteamAPI = new SteamAPI($this->route['auth']);
 		$sistem = new Sistem;
 
->>>>>>> Stashed changes
 		$vars = [
 			'data' => $this->model->getUser($this->route['auth']),
 			'statisticServer' => $mainModel->statisticServer(),
@@ -37,10 +32,7 @@ class UserController extends Controller
 			'lastrecords' => $this->model->lastRecords($this->route['auth']),
 			'nosteam' => $this->model->noSteam($this->route['auth']),
 			'sistem' => $sistem,
-<<<<<<< Updated upstream
-=======
 			'test' => $SteamAPI->getSteam2RenderedID(),
->>>>>>> Stashed changes
 		];
 		
 		$this->view->render('Пользователь',$vars);

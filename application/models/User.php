@@ -67,29 +67,8 @@ class User extends Model
 		return $result;
 	}
 
-<<<<<<< Updated upstream
-	public function style() {
-		$style = [
-				0 => 'Prespeed', //0
-			];
-
-		return $style;
-	}
-
-	public function track(){
-		$track = [
-			0 => 'Основа',
-			1 => 'Бонус'
-		];
-
-		return $track;
-	}
-
-	public function lastRecords($auth) {
-=======
 	public function lastRecords($auth) 
 	{
->>>>>>> Stashed changes
 		$params = [
 			'auth' => $auth,
 			'limit' => 5,

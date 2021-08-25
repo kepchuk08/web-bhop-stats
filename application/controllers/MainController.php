@@ -17,12 +17,8 @@ use application\models\User;
 
 class MainController extends Controller
 {
-<<<<<<< Updated upstream
-	public function indexAction(){
-=======
 	public function indexAction()
 	{
->>>>>>> Stashed changes
 		if (!empty($_POST)) {
 			$url = 'search/'.$_POST['name'];
 			$this->view->location($url);
@@ -61,18 +57,10 @@ class MainController extends Controller
 			'sistem' => $sistem,
 			'lastrecords' => $this->model->lastrecords(),
 			'style' => $sistem->style(),
-			'track' => $User->track(),
 		];
 
 		$this->view->render('Последние рекорды',$vars);
 	}
-<<<<<<< Updated upstream
-
-	public function searchAction(){
-		$SxGeo = new SxGeo('application/lib/SxGeo.dat', SXGEO_BATCH | SXGEO_MEMORY); 
-		$search = $this->route['value'];
-		$sistem = new Sistem;
-=======
 
 	public function searchAction()
 	{
@@ -81,7 +69,6 @@ class MainController extends Controller
 		
 		$search = $this->route['value'];
 
->>>>>>> Stashed changes
 		$vars = [
 			'search' => rawurldecode($search),
 			'user' => $this->model->search(rawurldecode($search)),

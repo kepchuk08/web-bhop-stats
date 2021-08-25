@@ -10,11 +10,6 @@ $(document).ready(function() {
 			cache: false,
 			processData: false,
 			success: function(result) {
-<<<<<<< Updated upstream
-				json = jQuery.parseJSON(result);
-				if (json.url) {
-					window.location.href = '/' + json.url;
-=======
 				console.log(result);
 				json = jQuery.parseJSON(result);
 
@@ -53,13 +48,8 @@ $(document).ready(function() {
 						icon: json.status,
 						text: json.message,
 					});
->>>>>>> Stashed changes
 				}
 			},
 		});
 	});
-<<<<<<< Updated upstream
 });
-=======
-});
->>>>>>> Stashed changes

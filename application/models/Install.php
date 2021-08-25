@@ -24,7 +24,7 @@ class Install
         $json = json_decode(file_get_contents($json_file),TRUE);
 
         if ((isset($_SERVER['REQUEST_SCHEME']) AND $_SERVER['REQUEST_SCHEME'] === 'https') OR (isset($_SERVER['HTTPS']) AND $_SERVER['HTTPS'] === 'on')){
-            $protocol = 'https';
+        $protocol = 'https';
         }
         else{
             $protocol = 'http';

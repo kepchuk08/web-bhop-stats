@@ -22,7 +22,6 @@ class InstallController extends Controller
         if (file_exists('application/config/config.json')){
             $this->view->redirect('');
         }
-        
         if (!empty($_POST)) {
             if (!$this->model->installForm($_POST)) {
                 $this->view->message('error', $this->model->error);

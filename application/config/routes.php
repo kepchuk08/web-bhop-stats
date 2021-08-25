@@ -44,13 +44,6 @@ return [
 		'controller' => 'maps',
 		'action' => 'allracords',
 	],
-<<<<<<< Updated upstream
-	'search/{value:[А-Яа-я\w:\%\[\]\./]+}' => [
-		'controller' => 'main',
-		'action' => 'search',
-	],
-
-=======
 	'maps/{map:\w+}/allrecords&style={style:\w+}&track={track:\w+}' => [
 		'controller' => 'maps',
 		'action' => 'allracords',
@@ -87,6 +80,10 @@ return [
 		'controller' => 'admin',
 		'action' => 'database',
 	],
+	'admin/settings' => [
+		'controller' => 'admin',
+		'action' => 'settings',
+	],
 	'admin/admins' => [
 		'controller' => 'admin',
 		'action' => 'admins',
@@ -98,6 +95,10 @@ return [
 	'install' => [
 		'controller' => 'install',
 		'action' => 'index',
-	]
->>>>>>> Stashed changes
+	],
+	'ajax' => [
+		'controller' => 'ajax',
+		'action' => 'ajax',
+	],
+
 ];

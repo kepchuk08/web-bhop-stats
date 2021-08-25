@@ -53,10 +53,7 @@
 							    </div>
 						  	</div>
 						  	<div class="col-12">
-<<<<<<< Updated upstream
-=======
 						  		
->>>>>>> Stashed changes
 						    	<div class="tab-content" id="nav-tabContent">
       								<div class="tab-pane fade show active" id="base" role="tabpanel" aria-labelledby="list-base-list">
       									<div class="row">
@@ -65,9 +62,6 @@
 				      							<div class="col-3 col-lg-2 pd-5">
 				      								<div class="section">
 				      									<div class="row block-info">
-<<<<<<< Updated upstream
-				      										<div class="col-12 block-info-text"><?php echo $style[$stylerecordItem['style']];?> <span><?php echo $stylerecordItem['count_style'];?></span></div>
-=======
 				      										<div class="col-12 block-info-text">
 				      											<?php
 				      											if (empty($style[$stylerecordItem['style']])) {
@@ -78,7 +72,6 @@
 				      											?> 
 				      											<span><?php echo $stylerecordItem['count_style'];?></span>
 				      										</div>
->>>>>>> Stashed changes
 				      										<div class="col-12 block-info-value">
 				      											<?php 
 				      											echo $sistem->userName($sistem->toprecbase($mapname, $stylerecordItem['style'])['auth']);
@@ -100,9 +93,6 @@
 				      						<div class="col-3 col-lg-2 pd-5">
 				      								<div class="section">
 				      									<div class="row block-info">
-<<<<<<< Updated upstream
-				      										<div class="col-12 block-info-text"><?php echo $style[$stylemapbonusItem['style']];?></div>
-=======
 				      										<div class="col-12 block-info-text">
 				      											<?php
 				      											if (empty($style[$stylemapbonusItem['style']])) {
@@ -112,7 +102,6 @@
 												    			}
 				      											?>
 				      										</div>
->>>>>>> Stashed changes
 				      										<div class="col-12 block-info-value">
 				      											<?php 
 				      											echo $sistem->userName($sistem->toprecbase($mapname, $stylemapbonusItem['style'])['auth']);
@@ -134,39 +123,18 @@
 										            <thead>
 										              	<tr>
 										              		<th scope="col">Игрок</th>
-<<<<<<< Updated upstream
-										              		<th scope="col">Время</th>
-										              		<th scope="col">Стиль</th>
-											                <th scope="col">Прыжков</th>
-											                <th scope="col">Стрефов</th>
-											                <th scope="col">Синх.</th>
-											                <th scope="col">Очков</th>
-=======
 										              		<th scope="col" class="text-center">Время</th>
 										              		<th scope="col" class="text-center">Стиль</th>
 											                <th scope="col" class="text-center">Прыжков</th>
 											                <th scope="col" class="text-center">Стрефов</th>
 											                <th scope="col" class="text-center">Синх.</th>
 											                <th scope="col" class="text-center">Очков</th>
->>>>>>> Stashed changes
 										              	</tr>
 										            </thead>
 										            <tbody class="table-tr">
 										            	<?php foreach ($lastRecordsMap as $lastRecordsMapItem):?>
 											              	<tr>
 													            <td><?php echo $sistem->userName($lastRecordsMapItem['auth']);?></td>
-<<<<<<< Updated upstream
-													            <td><?php echo $sistem->secToStr(round($lastRecordsMapItem['time']));?></td>
-													            <td><?php echo $style[$lastRecordsMapItem['style']];?></td>
-													            <td><?php echo $lastRecordsMapItem['jumps'];?></td>
-													            <td><?php echo $lastRecordsMapItem['strafes'];?></td>
-													            <td><?php echo $lastRecordsMapItem['sync'];?>%</td>
-													            <td><?php echo $lastRecordsMapItem['points'];?></td>
-											              	</tr>
-										              	<?php endforeach;?>
-										            </tbody>
-
-=======
 													            <td class="text-center"><?php echo $sistem->secToStr(round($lastRecordsMapItem['time']));?></td>
 													            <td class="text-center">
 													            	<?php
@@ -184,7 +152,6 @@
 											              	</tr>
 										              	<?php endforeach;?>
 										            </tbody>
->>>>>>> Stashed changes
 									          	</table>
 									          	<center><a href="<?php echo $this->route['map']; ?>/allrecords" class="btn_all_records">все рекорды</a></center>
 								        	</div>
@@ -198,11 +165,7 @@
 			</div>
 		</div>
 	</div>
-<<<<<<< Updated upstream
-</div>
-=======
 </div>
 
 
 
->>>>>>> Stashed changes

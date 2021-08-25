@@ -11,12 +11,9 @@ use application\core\Model;
 
 class Maps extends Model
 {
-<<<<<<< Updated upstream
-=======
 
 	public $error;
 
->>>>>>> Stashed changes
 	public function getMaps()
 	{
 		$result = $this->db->row("SELECT map, COUNT(map) AS count_map_rec, SUM(jumps) AS jumps, SUM(strafes) AS strafes FROM playertimes GROUP BY map ORDER BY count_map_rec DESC");
@@ -31,11 +28,7 @@ class Maps extends Model
 		];
 		$AllRecords = $this->db->column("SELECT COUNT(map) FROM playertimes WHERE map = :map", $params);
 		$BaseRecords = $this->db->column("SELECT COUNT(map) FROM playertimes WHERE map = :map AND track = 0", $params);
-<<<<<<< Updated upstream
-		$BonusRecords = $this->db->column("SELECT COUNT(map) FROM playertimes WHERE map = :map AND track = 1", $params);
-=======
 		$BonusRecords = $AllRecords - $BaseRecords;
->>>>>>> Stashed changes
 		$AllJumps = $this->db->column("SELECT SUM(jumps) FROM playertimes WHERE map = :map", $params);
 		$AllStrafes = $this->db->column("SELECT SUM(strafes) FROM playertimes WHERE map = :map", $params);
 		$AllSync = $this->db->column("SELECT SUM(sync) FROM playertimes WHERE map = :map", $params);
@@ -70,12 +63,8 @@ class Maps extends Model
 		$params = [
 			'map' => $map,
 		];
-<<<<<<< Updated upstream
-		$result = $this->db->row("SELECT style, COUNT(style) AS count_style FROM playertimes WHERE map = :map AND track = 1 GROUP BY style ORDER BY count_style DESC", $params);
-=======
 		$result = $this->db->row("SELECT `style`, COUNT(style) AS `count_style` FROM `playertimes` WHERE `map` = :map AND `track` not like '0' GROUP BY style ORDER BY count_style DESC", $params);
 		
->>>>>>> Stashed changes
 
 		return $result;
 	}
@@ -90,21 +79,12 @@ class Maps extends Model
 		return $result;
 	}
 
-<<<<<<< Updated upstream
-	public function allrecords($map)
-=======
 	public function allrecords($map, $style = '', $track = '')
->>>>>>> Stashed changes
 	{
 		$params = [
 			'map' => $map,
 		];
 		$result = $this->db->row("SELECT * FROM playertimes WHERE `map` = :map ORDER BY `date` DESC", $params);
-<<<<<<< Updated upstream
-
-		return $result;
-	}
-=======
 		
 		return $result;
 	}
@@ -138,7 +118,6 @@ class Maps extends Model
 		}
 		
 	}
->>>>>>> Stashed changes
 }
 
  ?>

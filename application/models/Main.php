@@ -28,9 +28,9 @@ class Main extends Model
 	public function statisticServer()
 	{
 		$Maps = $this->db->column("SELECT COUNT(DISTINCT map) FROM mapzones");
-		$TrackBonus = $this->db->column("SELECT COUNT(*) FROM playertimes WHERE track = 1");
-		$TrackBase = $this->db->column("SELECT COUNT(*) FROM playertimes WHERE track = 0");
 		$Records = $this->db->column("SELECT COUNT(*) FROM playertimes");
+		$TrackBase = $this->db->column("SELECT COUNT(*) FROM playertimes WHERE track = 0");
+		$TrackBonus = $Records - $TrackBase;
 
 		$resultArray = array(
 			'Maps'=>$Maps,
@@ -42,12 +42,8 @@ class Main extends Model
 		return $resultArray;
 	}
 
-<<<<<<< Updated upstream
-	public function userCount() {
-=======
 	public function userCount() 
 	{
->>>>>>> Stashed changes
 		return $this->db->column('SELECT COUNT(auth) FROM users');
 	}
 
@@ -58,14 +54,8 @@ class Main extends Model
 		return $result;
 	}
 
-<<<<<<< Updated upstream
-	public function search($id){
-		$SteamAPI = new SteamAPI;
-=======
 	public function search($id)
 	{
-		
->>>>>>> Stashed changes
 		if (preg_match('/^STEAM_[0-1]:([0-1]):([0-9]+)$/', $id)) {
 			$parts = explode(':', $id);
 			$a = $parts[2] * 2 + $parts[1];
@@ -89,12 +79,8 @@ class Main extends Model
 		}elseif(preg_match('/^(?:https?:\/\/)?(?:www.)?steamcommunity.com\/id\/([a-zA-Z0-9_-]{2,})\/*$/', $id, $matches)){
 			$valid = $SteamAPI->ConvertVanityURL($matches[1]);
 			if ($valid["success"] == 1) {
-<<<<<<< Updated upstream
-				$steam = $SteamAPI->st64to32($valid["steamid"]);
-=======
 				$SteamAPI = new SteamAPI($matches[1]);
 				$steam = $SteamAPI->getSteam2RenderedID();
->>>>>>> Stashed changes
 				$parts = explode(':', $steam);
 				$a = $parts[2] * 2 + $parts[1];
 				$params = [
@@ -106,12 +92,8 @@ class Main extends Model
 			return $result;
 
 		}elseif(preg_match('/^(?:https?:\/\/)?(?:www.)?steamcommunity.com\/profiles\/([0-9]+)\/*$/', $id, $matches)){
-<<<<<<< Updated upstream
-			$steam = $SteamAPI->st64to32($matches[1]);
-=======
 			$SteamAPI = new SteamAPI($matches[1]);
 			$steam = $SteamAPI->getSteam2RenderedID();
->>>>>>> Stashed changes
 			$parts = explode(':', $steam);
 				$a = $parts[2] * 2 + $parts[1];
 			$params = [
@@ -135,16 +117,8 @@ class Main extends Model
 				];
 				$result = $this->db->row("SELECT * FROM users WHERE name LIKE :name", $params);
 			}
-<<<<<<< Updated upstream
-			
-			
 
 			return $result;
-
-=======
-
-			return $result;
->>>>>>> Stashed changes
 		}
 	}
 }

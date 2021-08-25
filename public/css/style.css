@@ -29,13 +29,9 @@ body {
 a {
 	text-decoration: none;
 }
-<<<<<<< Updated upstream
-
-=======
 .mg-bottom-20{
 	margin-bottom: 20px;
 }
->>>>>>> Stashed changes
 .pd-20 {
 	padding: 20px;
 }
@@ -410,8 +406,6 @@ a {
 
 .pagination {
 	margin-top: 10px!importnat;
-<<<<<<< Updated upstream
-=======
 }
 
 th.sorted[data-order="-1"]::after {
@@ -449,5 +443,4 @@ th.sorted[data-order="-1"]::after {
 	padding: 50px;
 	font-size: 2em;
 	text-transform: uppercase;
->>>>>>> Stashed changes
 }

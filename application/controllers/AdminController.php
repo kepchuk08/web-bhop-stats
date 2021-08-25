@@ -41,7 +41,6 @@ class AdminController extends Controller
 	                        preg_match($ptn, $id, $matches);
 	                        
 	                        $steamid64 = $matches[1];
-	                        //debug($steamid64);
 	                        if (!$this->model->steamValidate($steamid64)) {
 	                        	$this->view->redirect('admin/login?steamauth=error');
 							}
@@ -61,8 +60,8 @@ class AdminController extends Controller
 				$this->view->message('error', $this->model->error);
 			}
 			$this->view->location('admin');
-		}	
-		
+		}
+
 		$this->view->render('Админ панель');
 	}
 
@@ -107,7 +106,7 @@ class AdminController extends Controller
 		if (!$this->model->check_session($_SESSION)) {
 			$this->view->redirect('admin/login');
 		}
-
+		
 		if (!empty($_POST)) {
 			$this->model->clearDB();
 			$this->view->message('success',$this->model->success);
@@ -157,5 +156,14 @@ class AdminController extends Controller
 
 		$this->model->deleteAdmin($this->route['adminid']);
 		$this->view->redirect('admin/admins');
+	}
+
+	public function settingsAction() 
+	{
+		if (!$this->model->check_session($_SESSION)) {
+			$this->view->redirect('admin/login');
+		}
+		
+		$this->view->render('Админ панель');
 	}
 }

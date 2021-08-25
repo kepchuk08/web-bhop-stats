@@ -70,3 +70,11 @@
 		</div>
 	</div>
 </div>	
+<!-- <script type="text/javascript">
+$(document).ready(function(){  
+    $('#trigger').click(function(){  
+        $('#refresh').load('/admin/db'); 
+        location.reload();
+    });    
+});
+</script> -->

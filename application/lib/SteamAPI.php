@@ -30,61 +30,6 @@ class SteamAPI {
 	const UNIVERSE_INTERNAL = 3;
 	const UNIVERSE_DEV = 4;
 
-<<<<<<< Updated upstream
-class SteamAPI
-{ 
-	public $key; 
-	public $id;
-
-	public function getSteamID64($id) {
-	    if (preg_match('/^STEAM_/', $id)) {
-	        $parts = explode(':', $id);
-	        return bcadd(bcadd(bcmul($parts[2], '2'), '76561197960265728'), $parts[1]);
-	    } elseif (is_numeric($id) && strlen($id) < 16) {
-	        return bcadd($id, '76561197960265728');
-	    } else {
-	        return $id;
-	    }
-	}
-	
-	public function ConvertVanityURL($url)
-	{
-		$config = require 'application/config/db.php';
-	  	$url = "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=".$config['steamkey']."&vanityurl=".$url."&format=json";
-	  	$data = file_get_contents($url);
-	  	$information = json_decode($data, true);
-	  	return $information["response"];
-	}
-
-	/**
-	 * Получаем из стим 64 => стим 32
-	 */
-	public static function st64to32($steamid64)
-    {
-        $pattern = "/^(7656119)([0-9]{10})$/";
-        if (preg_match($pattern, $steamid64, $match)) {
-            $const1 = 7960265728;
-            $const2 = "STEAM_0:";
-            $steam32 = '';
-            if ($const1 <= $match[2]) {
-                $a = ($match[2] - $const1) % 2;
-                $b = ($match[2] - $const1 - $a) / 2;
-                $steam32 = $const2 . $a . ':' . $b;
-            }
-            return $steam32;
-        }
-        return false;
-    }
-
-	/**
-	 * Получаем из стим 3 => стим 64
-	 */
-	public function steamid64($key) 
-	{
-		$key = '[U:1:'.$key.']';
-			if (preg_match('/^\[U:[0-9]:([0-9]+)\]$/', $key, $matches)) {
-		    	$key = '7656'.(1197960265728 + $matches[1]);
-=======
 	/**
 	 * SteamID account types
 	 */
@@ -205,7 +150,6 @@ class SteamAPI
 			$steamid3 = '[U:1:'.$matches[0].']';
 			if (preg_match('/^\[U:[0-9]:([0-9]+)\]$/', $steamid3, $matches)) {
 		    	$steamid64 = '7656'.(1197960265728 + $matches[1]);
->>>>>>> Stashed changes
 		  	}else{
 		    	$steamid64 = '7656'.(((substr($key, 10)) * 2) + 1197960265728 + (substr($key, 8, 1)));
 		  	}
@@ -273,33 +217,6 @@ class SteamAPI
 	}
 
 	/**
-<<<<<<< Updated upstream
-	 * Получаем из стим 32 => стим 3
-	 */
-	public static function st32to3($steamid32)
-    {
-        if (preg_match('/^STEAM_0\:1\:(.*)$/', $steamid32, $res)) {
- 
-            $st = '[U:1:';
-            $st .= $res[1] * 2 + 1;
-            $st .= ']';
-            return $st;
-        }
-        return false;
-    }
-
-
-    public static function st32to64($key)
-    {
-        if (preg_match('/^STEAM_1\:*\:(.*)$/', $key, $res)) {
-            list(, $m1, $m2) = explode(':', $key, 3);
-            list($steam_cid,) = explode('.', bcadd((((int)$m2 * 2) + $m1), '76561197960265728'), 2);
-            return $steam_cid;
-        }
-        return false;
-    }
-
-=======
 	 * Gets the rendered [T:U:A(:I)] format (T = type, U = universe, A = accountid, I = instance)
 	 * @return string
 	 */
@@ -361,7 +278,6 @@ class SteamAPI
 	public function isLobbyChat() {
 		return $this->type == self::TYPE_CHAT && ($this->instance & self::CHAT_INSTANCE_FLAG_LOBBY);
 	}
->>>>>>> Stashed changes
 
 	/**
 	 * Returns whether or not this SteamID is for a matchmaking lobby
@@ -416,20 +332,4 @@ class SteamAPI
 	  	return $information['players'][0]['VACBanned'];
 	}
 
-<<<<<<< Updated upstream
-	public function VacBanInfo ($key) {
-		if ($key = true) {
-			echo '<p class="vac-false"><i class="fas fa-thumbs-up"></i> VAC бан отсутствует</p>';
-		}else{
-			echo '<p class="vac-true"><i class="fas fa-thumbs-down"></i> У игрока VAC бан</p>';
-		}
-	}
-
 }
-
-
-
- ?>
-=======
-}
->>>>>>> Stashed changes

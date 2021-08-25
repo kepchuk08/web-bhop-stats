@@ -21,12 +21,8 @@ class Db
 		$this->db = new PDO('mysql:host='.$result['db'][0]['host'].';dbname='.$result['db'][0]['dbname'].'', $result['db'][0]['user'], $result['db'][0]['password']);
 	}
 
-<<<<<<< Updated upstream
-	public function query($sql, $params = []){
-=======
 	public function query($sql, $params = [])
 	{
->>>>>>> Stashed changes
 		$stmt = $this->db->prepare($sql);
 		if (!empty($params)) {
 			foreach ($params as $key => $val) {

@@ -8,10 +8,7 @@
 namespace application\lib;
 use application\lib\Db;
 use application\models\User;
-<<<<<<< Updated upstream
-=======
 use application\lib\Json;
->>>>>>> Stashed changes
 
 class Sistem
 { 
@@ -27,10 +24,6 @@ class Sistem
 	}
 
 	//делаем датам читаемый вид
-<<<<<<< Updated upstream
-	public function corectDate($date) {
-		$corectDate = date('d.n.y, H:i', $date);
-=======
 	public function corectDate($date) 
 	{
 		$dateTitle = date('d.n.y, H:i', $date);
@@ -77,7 +70,6 @@ class Sistem
 			'datediff' => $text,
 
 		];
->>>>>>> Stashed changes
 
 		return $resultArray;
 	}
@@ -98,12 +90,8 @@ class Sistem
 	}
 
 	//получаем ник игрока
-<<<<<<< Updated upstream
-	public function userName($auth){
-=======
 	public function userName($auth)
 	{
->>>>>>> Stashed changes
 		$params = [
 			'auth' => $auth,
 		];
@@ -113,89 +101,16 @@ class Sistem
 	}
 
 	//высчитываем какой стиль чаще всего играется на карте
-<<<<<<< Updated upstream
-	public function popularStyle($map){
-		$user = new User;
-		$style = $user->style();
-=======
 	public function popularStyle($map)
 	{
 		$user = new User;
 
->>>>>>> Stashed changes
 		$params = [
 			'map' => $map,
 		];
 		$result = $this->db->row("SELECT COUNT(style) AS count_style, style FROM playertimes WHERE map = :map GROUP BY style ORDER BY count_style DESC", $params);
 		$max = max($result);
 
-<<<<<<< Updated upstream
-		return $style[$max['style']];
-	}
-
-	//выводим топ игроков на карте по стилю на пути основа
-	public function toprecbase($map, $style)
-	{
-		$params = [
-			'map' => $map,
-			'style' => $style,
-		];
-		$result = $this->db->row("SELECT * FROM playertimes WHERE `map` = :map AND `style` = :style AND `track` = 0 ORDER BY `time` DESC LIMIT 1", $params);
-
-		return $result[0];
-	}
-
-	//выводим топ игроков на карте по стилю на пути бонус
-	public function toprecbonus($map, $style)
-	{
-		$params = [
-			'map' => $map,
-			'style' => $style,
-		];
-		$result = $this->db->row("SELECT * FROM playertimes WHERE `map` = :map AND `style` = :style AND `track` = 1 ORDER BY `time` DESC LIMIT 1", $params);
-
-		return $result[0];
-	}
-
-
-	//приводим пройденное время в порядок
-	function secToStr($secs)
-	{
-		$minutes = floor($secs / 60); // минуты
-		$hours = floor($minutes / 60); // часы
-		$minutes = $minutes - ($hours * 60); // оставшиеся минуты
-		$sec = $secs - ((($hours * 60) + $minutes) * 60); //оставшиеся секунды
-
-		if ($minutes == 0) {
-			$text_min = NULL;
-		}else{
-			$text_min = $minutes.' мин.  ';
-		}
-
-		if ($hours == 0) {
-			$text_hour = NULL;
-		}else{
-			$text_sec = $hours.' час.  ';
-		}
-
-		if ($sec == 0) {
-			$text_sec = NULL;
-		}else{
-			$text_sec = $sec.' сек.  ';
-		}
-		
-		if (empty($text_hour)) {
-			$result = $text_min.''.$text_sec;
-		}elseif(empty($text_hour) || empty($text_min)){
-			$result = $text_sec;
-		}else{
-			$result = $text_hour.''.$text_min.''.$text_sec;
-		}
-
-		return $result;
-	}
-}
-=======
 		return $max['style'];
 	}
 
@@ -304,5 +219,4 @@ class Sistem
 	}
 }
 
->>>>>>> Stashed changes
 ?>
