@@ -16,7 +16,6 @@ class User extends Model
 	
 	public function getUser($auth)
 	{
-		
 		$params = [
 			'auth' => $auth,
 		];
@@ -27,7 +26,6 @@ class User extends Model
 
 	public function noSteam($auth)
 	{
-		
 		$params = [
 			'auth' => $auth,
 		];
@@ -36,12 +34,15 @@ class User extends Model
 		return $result[0]['name'];
 	}
 
-	public function statisticMaps($auth){
+	public function statisticMaps($auth)
+	{
 		$params = [
 			'auth' => $auth,
 		];
-		$bonus = $this->db->column("SELECT COUNT(*) FROM playertimes WHERE track = 1 AND auth = :auth", $params);
 		$base = $this->db->column("SELECT COUNT(*) FROM playertimes WHERE track = 0 AND auth = :auth", $params);
+		$allRecords = $this->db->column("SELECT COUNT(*) FROM playertimes WHERE auth = :auth", $params);
+		$bonus = $allRecords - $base;
+		
 		$maps = $this->db->column("SELECT COUNT(*) FROM playertimes WHERE auth = :auth", $params);
 		$jumps = $this->db->column("SELECT SUM(jumps) AS jumps FROM playertimes WHERE auth = :auth", $params);
 		$strafes = $this->db->column("SELECT SUM(strafes) AS strafes FROM playertimes WHERE auth= :auth", $params);
@@ -56,7 +57,8 @@ class User extends Model
 		return $resultArray;
 	}
 
-	public function styleRecord($auth) {
+	public function styleRecord($auth) 
+	{
 		$params = [
 			'auth' => $auth,
 		];
@@ -65,6 +67,7 @@ class User extends Model
 		return $result;
 	}
 
+<<<<<<< Updated upstream
 	public function style() {
 		$style = [
 				0 => 'Prespeed', //0
@@ -83,6 +86,10 @@ class User extends Model
 	}
 
 	public function lastRecords($auth) {
+=======
+	public function lastRecords($auth) 
+	{
+>>>>>>> Stashed changes
 		$params = [
 			'auth' => $auth,
 			'limit' => 5,
@@ -92,7 +99,8 @@ class User extends Model
 		return $result;
 	}
 
-	public function allRecords($auth) {
+	public function allRecords($auth) 
+	{
 		$params = [
 			'auth' => $auth,
 		];
@@ -100,9 +108,10 @@ class User extends Model
 		$result = $this->db->row("SELECT `map`,`time`,`jumps`,`style`,`date`,`strafes`,`sync`,`points`,`track` FROM playertimes WHERE `auth` = :auth ORDER BY `date` DESC", $params);
 
 		return $result;
-
 	}
-	public function recordsStyle($auth, $style) {
+
+	public function recordsStyle($auth, $style) 
+	{
 		$params = [
 			'auth' => $auth,
 			'style' => $style,
@@ -110,7 +119,6 @@ class User extends Model
 		$result = $this->db->row("SELECT `map`,`time`,`jumps`,`date`,`strafes`,`sync`,`points`,`track` FROM playertimes WHERE `auth` = :auth AND `style` = :style ORDER BY `date` DESC", $params);
 
 		return $result;
-
 	}
 
 }

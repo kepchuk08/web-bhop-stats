@@ -17,7 +17,12 @@ use application\models\User;
 
 class MainController extends Controller
 {
+<<<<<<< Updated upstream
 	public function indexAction(){
+=======
+	public function indexAction()
+	{
+>>>>>>> Stashed changes
 		if (!empty($_POST)) {
 			$url = 'search/'.$_POST['name'];
 			$this->view->location($url);
@@ -29,6 +34,7 @@ class MainController extends Controller
 			$page = $this->route['page'] + 9;
 		}
 		$position = $id * $page;
+
 		$SxGeo = new SxGeo('application/lib/SxGeo.dat', SXGEO_BATCH | SXGEO_MEMORY); 
 		$sistem = new Sistem;
 
@@ -45,24 +51,37 @@ class MainController extends Controller
 		$this->view->render('главная страница', $vars);
 	}
 
-	public function lastrocordsAction(){
+	public function lastrocordsAction()
+	{
 		$sistem = new Sistem;
 		$User = new User;
+
 		$vars = [
 			'statisticServer' => $this->model->statisticServer(),
 			'sistem' => $sistem,
 			'lastrecords' => $this->model->lastrecords(),
-			'style' => $User->style(),
+			'style' => $sistem->style(),
 			'track' => $User->track(),
 		];
 
 		$this->view->render('Последние рекорды',$vars);
 	}
+<<<<<<< Updated upstream
 
 	public function searchAction(){
 		$SxGeo = new SxGeo('application/lib/SxGeo.dat', SXGEO_BATCH | SXGEO_MEMORY); 
 		$search = $this->route['value'];
 		$sistem = new Sistem;
+=======
+
+	public function searchAction()
+	{
+		$SxGeo = new SxGeo('application/lib/SxGeo.dat', SXGEO_BATCH | SXGEO_MEMORY); 
+		$sistem = new Sistem;
+		
+		$search = $this->route['value'];
+
+>>>>>>> Stashed changes
 		$vars = [
 			'search' => rawurldecode($search),
 			'user' => $this->model->search(rawurldecode($search)),

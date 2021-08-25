@@ -51,5 +51,8 @@ class View {
 	public function location($url) {
 		exit(json_encode(['url' => $url]));
 	}
+	public function warning($title,$text,$confirmButtonText,$message,$status) {
+		exit(json_encode(['title' => $title, 'text' => $text, 'confirmButtonText' => $confirmButtonText, 'message' => $message, 'status'=> $status]));
+	}
 
 }	

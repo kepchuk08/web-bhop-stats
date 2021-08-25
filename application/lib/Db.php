@@ -7,6 +7,7 @@
 
 namespace application\lib;
 use PDO;
+use application\lib\Json;
 
 class Db
 {
@@ -15,12 +16,17 @@ class Db
 
 	public function __construct()
 	{
-		$result = require 'application/config/db.php';
-		$this->db = new PDO('mysql:host='.$result['host'].';dbname='.$result['dbname'].'', $result['user'], $result['password']);
-
+		$json = new Json;
+		$result = $json->getJson();
+		$this->db = new PDO('mysql:host='.$result['db'][0]['host'].';dbname='.$result['db'][0]['dbname'].'', $result['db'][0]['user'], $result['db'][0]['password']);
 	}
 
+<<<<<<< Updated upstream
 	public function query($sql, $params = []){
+=======
+	public function query($sql, $params = [])
+	{
+>>>>>>> Stashed changes
 		$stmt = $this->db->prepare($sql);
 		if (!empty($params)) {
 			foreach ($params as $key => $val) {
@@ -33,22 +39,27 @@ class Db
 			}
 		}
 		$stmt->execute();
+
 		return $stmt;
 	}
 
 	/**
 	 * Возвращаем список столбцов
 	 */
-	public function row($sql, $params = []){
+	public function row($sql, $params = [])
+	{
 		$result = $this->query($sql, $params);
+
 		return $result->fetchAll(PDO::FETCH_ASSOC);
 	}
 
 	/**
 	 * Возвращаем столбец
 	 */
-	public function column($sql, $params = []){
+	public function column($sql, $params = [])
+	{
 		$result = $this->query($sql, $params);
+		
 		return $result->fetchColumn();
 	}
 }

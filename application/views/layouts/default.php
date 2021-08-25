@@ -17,6 +17,18 @@
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
     <link rel="stylesheet" type="text/css" href="/public/css/style-media.css">
     <link rel="stylesheet" href="/public/css/all.min.css"> 
+<<<<<<< Updated upstream
+=======
+    <link rel="stylesheet" type="text/css" href="/public/css/sweetalert2.min.css">
+    <script src="/public/js/jquery.js"></script>
+    <script src="/public/js/sweetalert2.all.min.js"></script>
+    <script src="/public/js/main.js"></script>
+    <script src="/public/js/sortTable.js"></script>
+    <script src="/public/js/form.js"></script>
+    <script src="/public/js/popper.js"></script>
+
+    
+>>>>>>> Stashed changes
 </head>
 
 <body>
@@ -39,7 +51,10 @@
                             <a class="nav-link" href="/maps">Карты</a>
                         </li>  
                     </ul>
+<<<<<<< Updated upstream
                     
+=======
+>>>>>>> Stashed changes
                 </div>
                 <form class="form-search" action="/" method="POST" class="d-flex">
                     <div class="input-group">
@@ -56,6 +71,7 @@
                     <div class="col-12 col-lg-7 block-info-text">ВСЕГО РЕКОРДОВ</div>
                     <div class="col-12 col-lg-5 block-info-value"><?php echo $statisticServer['Records']; ?></div>
                 </div>
+<<<<<<< Updated upstream
             </div>
             <div class="col-3 indent block-info-pd">
                 <div class="row block-info">
@@ -67,6 +83,25 @@
                 <div class="row block-info">
                     <div class="col-12 col-lg-7 block-info-text">РЕКОРДОВ БОНУС</div>
                     <div class="col-12 col-lg-5 block-info-value"><?php echo $statisticServer['TrackBonus']; ?></div>
+=======
+            </div>
+            <div class="col-3 indent block-info-pd">
+                <div class="row block-info">
+                    <div class="col-12 col-lg-7 block-info-text">РЕКОРДОВ ОСНОВА</div>
+                    <div class="col-12 col-lg-5 block-info-value"><?php echo $statisticServer['TrackBase']; ?></div>
+>>>>>>> Stashed changes
+                </div>
+            </div>
+            <div class="col-3 indent block-info-pd">
+                <div class="row block-info">
+<<<<<<< Updated upstream
+                    <div class="col-12 col-lg-7 block-info-text">ВСЕГО КАРТ</div>
+                    <div class="col-12 col-lg-5 block-info-value"><?php echo $statisticServer['Maps']; ?></div>
+                </div>
+            </div>
+=======
+                    <div class="col-12 col-lg-7 block-info-text">РЕКОРДОВ БОНУС</div>
+                    <div class="col-12 col-lg-5 block-info-value"><?php echo $statisticServer['TrackBonus']; ?></div>
                 </div>
             </div>
             <div class="col-3 indent block-info-pd">
@@ -75,6 +110,7 @@
                     <div class="col-12 col-lg-5 block-info-value"><?php echo $statisticServer['Maps']; ?></div>
                 </div>
             </div>
+>>>>>>> Stashed changes
         </div>
 
         <?php echo $content;?>
@@ -84,6 +120,7 @@
                 <img src="/public/img/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
             </div>
             <div class="col-12 col-lg-6 footer-logo2">
+<<<<<<< Updated upstream
                 <span><a href="">Bhop Stats</a> <i>v1.0</i> Developed by <a href="">kepchuk</a> © 2020</span>
             </div>
         </div>
@@ -91,6 +128,14 @@
     <script src="/public/js/jquery.js"></script>
     <script src="/public/js/form.js"></script>
     <script src="/public/js/popper.js"></script>
+=======
+                <span><a href="https://github.com/kepchuk08/web-bhop-stats">Bhop Stats</a> <i>v1.2.0</i> Developed by <a href="https://steamcommunity.com/id/kepchuk/">kepchuk</a> © <?php echo date('Y');?></span>
+            </div>
+        </div>
+    </div>
+
+
+>>>>>>> Stashed changes
     <script type="text/javascript" src="/public/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/public/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="/public/js/main.js"></script>

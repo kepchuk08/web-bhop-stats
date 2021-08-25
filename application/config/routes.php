@@ -6,6 +6,7 @@
  */
 
 return [
+
 	'' => [
 		'controller' => 'main',
 		'action' => 'index',
@@ -43,9 +44,60 @@ return [
 		'controller' => 'maps',
 		'action' => 'allracords',
 	],
+<<<<<<< Updated upstream
 	'search/{value:[А-Яа-я\w:\%\[\]\./]+}' => [
 		'controller' => 'main',
 		'action' => 'search',
 	],
 
+=======
+	'maps/{map:\w+}/allrecords&style={style:\w+}&track={track:\w+}' => [
+		'controller' => 'maps',
+		'action' => 'allracords',
+	],
+	'search/{value:[А-Яа-я\w:\[\].?,;$!%*|=+@/\-\(\)]+}' => [
+		'controller' => 'main',
+		'action' => 'search',
+	],
+	'admin/login' => [
+		'controller' => 'admin',
+		'action' => 'login',
+	],
+	'admin/login{status:\?steamauth=([\w+\D+]+)}' => [
+		'controller' => 'admin',
+		'action' => 'login',
+	],
+	'admin/logout' => [
+		'controller' => 'admin',
+		'action' => 'logout',
+	],
+	'auth' => [
+		'controller' => 'admin',
+		'action' => 'auth',
+	],
+	'auth{openid:\?openid.ns=([\w+\D+]+)}' => [
+		'controller' => 'admin',
+		'action' => 'auth',
+	],
+	'admin' => [
+		'controller' => 'admin',
+		'action' => 'index',
+	],
+	'admin/db' => [
+		'controller' => 'admin',
+		'action' => 'database',
+	],
+	'admin/admins' => [
+		'controller' => 'admin',
+		'action' => 'admins',
+	],
+	'admin/admins/delete/{adminid:\d+}' => [
+		'controller' => 'admin',
+		'action' => 'delete',
+	],
+	'install' => [
+		'controller' => 'install',
+		'action' => 'index',
+	]
+>>>>>>> Stashed changes
 ];

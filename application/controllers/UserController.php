@@ -14,62 +14,76 @@ use application\lib\Sistem;
 
 class UserController extends Controller
 {
-	public function indexAction(){
+	public function indexAction()
+	{
 		$mainModel = new Main;
+<<<<<<< Updated upstream
 		$SteamAPI = new SteamAPI;
 		$sistem = new Sistem;
+=======
+		$SteamAPI = new SteamAPI($this->route['auth']);
+		$sistem = new Sistem;
+
+>>>>>>> Stashed changes
 		$vars = [
 			'data' => $this->model->getUser($this->route['auth']),
 			'statisticServer' => $mainModel->statisticServer(),
-			'steamapi' => $SteamAPI->GetPlayerInfo($this->route['auth']),
+			'steamapi' => $SteamAPI->GetPlayerInfo(),
 			'steam'=> $SteamAPI,
-			'vac'=> $SteamAPI->VacBan($this->route['auth']),
+			'vac'=> $SteamAPI->VacBan(),
 			'userstatsmaps' => $this->model->statisticMaps($this->route['auth']),
 			'styleRecord' => $this->model->styleRecord($this->route['auth']),
-			'style' => $this->model->style(),
+			'style' => $sistem->style(),
 			'lastrecords' => $this->model->lastRecords($this->route['auth']),
 			'nosteam' => $this->model->noSteam($this->route['auth']),
 			'sistem' => $sistem,
+<<<<<<< Updated upstream
+=======
+			'test' => $SteamAPI->getSteam2RenderedID(),
+>>>>>>> Stashed changes
 		];
 		
 		$this->view->render('Пользователь',$vars);
 	}
 
-	public function allrecordsAction(){
+	public function allrecordsAction()
+	{
 		$mainModel = new Main;
 		$sistem = new Sistem;
-		$SteamAPI = new SteamAPI;
+		$SteamAPI = new SteamAPI($this->route['auth']);
+
 		$vars = [
 			'nosteam' => $this->model->nosteam($this->route['auth']),
 			'allrecords' => $this->model->allRecords($this->route['auth']),
 			'statisticServer' => $mainModel->statisticServer(),
-			'style' => $this->model->style(),
+			'style' => $sistem->style(),
 			'track' => $this->model->track(),
 			'sistem' => $sistem,
-			'steamapi' => $SteamAPI->GetPlayerInfo($this->route['auth']),
+			'steamapi' => $SteamAPI->GetPlayerInfo(),
 			'steam'=> $SteamAPI,
-			'vac'=> $SteamAPI->VacBan($this->route['auth']),
+			'vac'=> $SteamAPI->VacBan(),
 
 		];
 
 		$this->view->render('Все рекорды',$vars);
 	}
 
-	public function allstyleAction(){
+	public function allstyleAction()
+	{
 		$mainModel = new Main;
 		$sistem = new Sistem;
-		$SteamAPI = new SteamAPI;
+		$SteamAPI = new SteamAPI($this->route['auth']);
+		
 		$vars = [
 			'nosteam' => $this->model->nosteam($this->route['auth']),
 			'allrecords' => $this->model->allRecords($this->route['auth']),
 			'statisticServer' => $mainModel->statisticServer(),
-			'style' => $this->model->style(),
+			'style' => $sistem->style(),
 			'track' => $this->model->track(),
 			'sistem' => $sistem,
-			'steamapi' => $SteamAPI->GetPlayerInfo($this->route['auth']),
+			'steamapi' => $SteamAPI->GetPlayerInfo(),
 			'steam'=> $SteamAPI,
-			'vac'=> $SteamAPI->VacBan($this->route['auth']),
-
+			'vac'=> $SteamAPI->VacBan(),
 		];
 
 		$this->view->render('Все рекорды',$vars);

@@ -1,10 +1,41 @@
+html{min-height: 100%;}
 body {
 	background: #212529;
+	position: relative; 
+	min-height: 100%;
 }
+
+#wrapper{
+	width:100%;
+}
+.error-box{
+	height:100%;
+	position:fixed;
+	top:20%;
+	width:100%
+}
+.error-body{
+	padding-top:5%
+}
+.error-body h1{
+	font-size:210px;
+	font-weight:900;
+	line-height:210px
+}
+.text-danger{
+	color:#112365!importnat
+}
+
 a {
 	text-decoration: none;
 }
+<<<<<<< Updated upstream
 
+=======
+.mg-bottom-20{
+	margin-bottom: 20px;
+}
+>>>>>>> Stashed changes
 .pd-20 {
 	padding: 20px;
 }
@@ -98,8 +129,8 @@ a {
 
 .content {
 	padding: 20px 40px;
+	min-height: 543px;
 }
-
 .footer-logo1 {
 	font-size: 18pt;
 }
@@ -214,9 +245,20 @@ a {
 	padding: 0 10px;
 }
 
-.section_last span{
+.section_last{
+	padding-top: 10px;
+}
+
+.title_page{
 	font-weight: 600;
-	text-transform: uppercase;
+	font-size: 1.3em;
+}
+
+.text-color-ced4da{
+	color: #6c757d;
+}
+.title_page i{
+	font-size: 1em;
 }
 
 .font-300 {
@@ -368,4 +410,44 @@ a {
 
 .pagination {
 	margin-top: 10px!importnat;
+<<<<<<< Updated upstream
+=======
+}
+
+th.sorted[data-order="-1"]::after {
+	content: "↓"
+}
+
+th.sorted[data-order="1"]::after {
+	content: "↑"
+}
+.table_sort th:hover{
+	cursor: pointer;
+	background-color: #212529;
+	color: #fff;
+}
+th.sorted[data-order="1"],
+th.sorted[data-order="-1"] {
+    position: relative;
+}
+
+th.sorted[data-order="1"]::after,
+th.sorted[data-order="-1"]::after {
+    right: 8px;
+    position: absolute;
+}
+
+.title_page a{
+	background-color: #186f64;
+	color: #fff;
+	font-size: 1.2em;
+	padding: 5px 10px;
+}
+
+.login-logo{
+	color: #fff;
+	padding: 50px;
+	font-size: 2em;
+	text-transform: uppercase;
+>>>>>>> Stashed changes
 }

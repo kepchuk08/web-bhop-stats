@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 AddDefaultCharset utf-8
 RewriteEngine On
 RewriteBase /
@@ -6,3 +7,11 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?route=$1 [L,QSA]
 
+=======
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php
+php_value default_charset utf-8
+AddType 'text/html; charset=utf-8' .html .htm .shtml
+>>>>>>> Stashed changes

@@ -9,7 +9,7 @@ namespace application\lib;
 
 class Pagination {
     
-    private $max = 10;
+    private $max = 5;
     private $route;
     private $index = '';
     private $current_page;
@@ -27,7 +27,7 @@ class Pagination {
     public function get() {
         $links = null;
         $limits = $this->limits();
-        $html = '<nav><ul class="pagination justify-content-center">';
+        $html = '<nav><br><ul class="pagination justify-content-center">';
         for ($page = $limits[0]; $page <= $limits[1]; $page++) {
             if ($page == $this->current_page) {
                 $links .= '<li class="page-item active"><span class="page-link">'.$page.'</span></li>';
@@ -37,10 +37,10 @@ class Pagination {
         }
         if (!is_null($links)) {
             if ($this->current_page > 1) {
-                $links = $this->generateHtml(1, 'Вперед').$links;
+                $links = $this->generateHtml(1, '<').$links;
             }
             if ($this->current_page < $this->amount) {
-                $links .= $this->generateHtml($this->amount, 'Назад');
+                $links .= $this->generateHtml($this->amount, '>');
             }
         }
         $html .= $links.' </ul></nav>';
