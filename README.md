@@ -23,7 +23,7 @@ Apache
 > :white_check_mark: Поиск по игроку и по карте  
 > :white_check_mark: Админ панель(Настройка стилей, базы данных, администраторов)  
 > :white_check_mark: автоматическая установка движка  
-> :x: Локализация  
+> :white_check_mark: Локализация  
 > :black_square_button: Обвязка с SourceBans  
 > :black_square_button: Обвязка с Shop  
 ## [Demo](https://demo.game-lab.su/)
