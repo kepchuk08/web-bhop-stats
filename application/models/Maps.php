@@ -111,7 +111,7 @@ class Maps extends Model
 		];
 		$result = $this->db->row("SELECT * FROM playertimes WHERE `map` = :map AND `style` = :style AND `track` = :track ORDER BY `date`", $params);
 		if (empty($result)) {
-			$this->error = 'По данному стилю и пути нет рекродов';
+			$this->error = MODEL_MAP_ERROR_SEARCH;
 			return false;
 		}else{
 			return true;

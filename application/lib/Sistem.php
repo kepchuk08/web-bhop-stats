@@ -38,32 +38,34 @@ class Sistem
 				if ($corectDate == 0) {
 					$corectDate = $difference;
 					if ($corectDate == 1) {
-						$text = $corectDate.' секунду назад';
+						$text = $corectDate.LIB_SISTEM_A_SECOND_AGO;
 					}elseif($corectDate > 1 AND $corectDate < 5){
-						$text = $corectDate.' секунды назад';
+						$text = $corectDate.LIB_SISTEM_SECONDS_AGO;
 					}else{
-						$text = $corectDate.' секунд назад';
+						$text = $corectDate.LIB_SISTEM_A_SECONDS_AGO;
 					}
 				}
 				if ($corectDate == 1) {
-					$text = $corectDate.' минуту назад';
+					$text = $corectDate.LIB_SISTEM_A_MINUTE_AGO;
 				}elseif($corectDate > 1 AND $corectDate < 5){
-					$text = $corectDate.' минуты назад';
+					$text = $corectDate.LIB_SISTEM_MINUTES_AGO;
 				}else{
-					$text = $corectDate.' минут назад';
+					$text = $corectDate.LIB_SISTEM_A_MINUTES_AGO;
 				}
 			}
 			if ($corectDate == 1) {
-				$text = $corectDate.' час назад';
+				$text = $corectDate.LIB_SISTEM_AN_HOUR_AGO;
 			}elseif($corectDate > 1 AND $corectDate < 5){
-				$text = $corectDate.' часа назад';
+				$text = $corectDate.LIB_SISTEM_HOURS_AGO;
 			}else{
-				$text = $corectDate.' часов назад';
+				$text = $corectDate.LIB_SISTEM_AN_HOURS_AGO;
 			}
 		}elseif($corectDate == 1){
-			$text = $corectDate.' день назад';
+			$text = $corectDate.LIB_SISTEM_A_DAY_AGO;
+		}elseif($corectDate > 1 AND $corectDate < 5){
+			$text = $corectDate.LIB_SISTEM_DAYS_AGO;
 		}else{
-			$text = $corectDate.' дня назад';
+			$text = $corectDate.LIB_SISTEM_A_DAYS_AGO;
 		}
 		$resultArray = [
 			'title' => $dateTitle,
@@ -82,7 +84,7 @@ class Sistem
 		];
 		$result = $this->db->row('SELECT `map` FROM playertimes WHERE `auth` = :auth ORDER BY `date` DESC LIMIT 1', $params);
 		if (!isset($result[0]['map'])) {
-			$error = 'Игрок не прошел ни одной карты';
+			$error = LIB_SISTEM_THERE_ARE_NO_RECORDS;
 			return $error;
 		}else {
 			return $result[0]['map'];
@@ -133,7 +135,7 @@ class Sistem
 			'map' => $map,
 			'style' => $style,
 		];
-		$result = $this->db->row("SELECT * FROM playertimes WHERE `map` = :map AND `style` = :style AND `track` = 1 ORDER BY `time` DESC LIMIT 1", $params);
+		$result = $this->db->row("SELECT * FROM playertimes WHERE `map` = :map AND `style` = :style AND `track` not like '0' ORDER BY `time` DESC LIMIT 1", $params);
 
 		return $result[0];
 	}
@@ -150,19 +152,19 @@ class Sistem
 		if ($minutes == 0) {
 			$text_min = NULL;
 		}else{
-			$text_min = $minutes.' мин.  ';
+			$text_min = $minutes.LIB_SISTEM_MINUTE;
 		}
 
 		if ($hours == 0) {
 			$text_hour = NULL;
 		}else{
-			$text_sec = $hours.' час.  ';
+			$text_sec = $hours.LIB_SISTEM_HOURS;
 		}
 
 		if ($sec == 0) {
 			$text_sec = NULL;
 		}else{
-			$text_sec = $sec.' сек.  ';
+			$text_sec = $sec.LIB_SISTEM_SECOND;
 		}
 		
 		if (empty($text_hour)) {
@@ -186,9 +188,9 @@ class Sistem
 	public function track($id)
 	{
 		if ($id == 0) {
-			$track = 'Основа';
+			$track = LIB_SISTEM_TRACK_BASE;
 		}else{
-			$track = 'Бонус';
+			$track = LIB_SISTEM_TRACK_BONUS;
 		}
 
 		return $track;
@@ -198,13 +200,13 @@ class Sistem
 	public function userStatus($key) {
 		switch ($key) {
 		    case '1':
-		      echo '<p class="user-online"><i class="fas fa-battery-full"></i> В сети</p>';
+		      echo '<p class="user-online"><i class="fas fa-battery-full"></i> '.LIB_SISTEM_STATUS_STEAM_ONLI.'</p>';
 		      break;
 		    case '3':
-		      echo '<p class="user-away"><i class="fas fa-battery-half"></i> Нет на месте</p>';
+		      echo '<p class="user-away"><i class="fas fa-battery-half"></i> '.LIB_SISTEM_STATUS_STEAM_NOT_IN_PLACE.'</p>';
 		      break;
 		    default:
-		      echo '<p class="user-offline"><i class="fas fa-battery-empty"></i> Не в сети</p>';
+		      echo '<p class="user-offline"><i class="fas fa-battery-empty"></i> '.LIB_SISTEM_STATUS_STEAM_OFF.'</p>';
 		      break;
 		}
 	}
@@ -212,9 +214,9 @@ class Sistem
 	//Vac статус
 	public function VacBanInfo ($key) {
 		if ($key = true) {
-			echo '<p class="vac-false"><i class="fas fa-thumbs-up"></i> VAC бан отсутствует</p>';
+			echo '<p class="vac-false"><i class="fas fa-thumbs-up"></i> '.LIB_SISTEM_STATUS_VAC_NO.'</p>';
 		}else{
-			echo '<p class="vac-true"><i class="fas fa-thumbs-down"></i> У игрока VAC бан</p>';
+			echo '<p class="vac-true"><i class="fas fa-thumbs-down"></i> '.LIB_SISTEM_STATUS_VAC_YES.'</p>';
 		}
 	}
 }

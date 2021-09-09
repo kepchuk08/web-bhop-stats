@@ -7,7 +7,7 @@
     <meta name="description" content="Бхоп статистика сервера"> 
     <meta name="keywords" content="бхоп,bhop,css,cs go">
     <meta name="author" content="Kepchuk">
-    <title>Bhop Stat</title>
+    <title>Bhop Stat::<?php echo $title;?></title>
     <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" type="text/css" href="/public/css/bootstrap-grid.min.css">
@@ -42,19 +42,30 @@
                 <div class="collapse navbar-collapse " id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/lastrocords">Последние рекорды</a>
+                            <a class="nav-link" href="/lastrocords"><?=LASTRECORDS?></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/maps">Карты</a>
+                            <a class="nav-link" href="/maps"><?=DEF_MENU_MAPS?></a>
                         </li>  
                     </ul>
-                    
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropleft" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?=HED_LANG_SELECT?>
+                  </button>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" onclick="lselect('ru')">Русский</a></li>
+                        <li><a class="dropdown-item" onclick="lselect('en')">English</a></li>
+                        <li><a class="dropdown-item" onclick="lselect('de')">Deutsch</a></li>
+                    </ul>
                 </div>
                 <form class="form-search" action="/" method="POST" class="d-flex">
                     <div class="input-group">
-                        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true" title="<em>Подсказка:</em><br><b>STEAM_x:x:xxxxx<br>[U:x:xxxxx]<br>Игровой ник<br>Ссылка в стиме</b>"><i class="fas fa-info-circle"></i></button>
-                        <input type="text" name="name" class="form-control" placeholder="Поиск игрока">
-                        <button class="btn btn-outline-secondary" type="submit" name="submit">Поиск</button>
+                        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true" title="<?=HED_SEARCH_TITLE?>"><i class="fas fa-info-circle"></i></button>
+                        <input type="text" name="name" class="form-control" placeholder="<?=HED_SEARCH_placeholder?>">
+                        <button class="btn btn-outline-secondary" type="submit" name="submit"><?=HED_SEARCH_submit?></button>
                     </div>
                 </form>
             </div>      
@@ -62,25 +73,25 @@
         <div class="row bg-white padding-20">
             <div class="col-3 indent block-info-pd">
                 <div class="row block-info">
-                    <div class="col-12 col-lg-7 block-info-text">ВСЕГО РЕКОРДОВ</div>
+                    <div class="col-12 col-lg-7 block-info-text"><?=INFO_HED_ALL_RECORDS?></div>
                     <div class="col-12 col-lg-5 block-info-value"><?php echo $statisticServer['Records']; ?></div>
                 </div>
             </div>
             <div class="col-3 indent block-info-pd">
                 <div class="row block-info">
-                    <div class="col-12 col-lg-7 block-info-text">РЕКОРДОВ ОСНОВА</div>
+                    <div class="col-12 col-lg-7 block-info-text"><?=INFO_HED_REC_BASE?></div>
                     <div class="col-12 col-lg-5 block-info-value"><?php echo $statisticServer['TrackBase']; ?></div>
                 </div>
             </div>
             <div class="col-3 indent block-info-pd">
                 <div class="row block-info">
-                    <div class="col-12 col-lg-7 block-info-text">РЕКОРДОВ БОНУС</div>
+                    <div class="col-12 col-lg-7 block-info-text"><?=INFO_HED_REC_BONUS?></div>
                     <div class="col-12 col-lg-5 block-info-value"><?php echo $statisticServer['TrackBonus']; ?></div>
                 </div>
             </div>
             <div class="col-3 indent block-info-pd">
                 <div class="row block-info">
-                    <div class="col-12 col-lg-7 block-info-text">ВСЕГО КАРТ</div>
+                    <div class="col-12 col-lg-7 block-info-text"><?=INFO_HED_ALL_MAPS?></div>
                     <div class="col-12 col-lg-5 block-info-value"><?php echo $statisticServer['Maps']; ?></div>
                 </div>
             </div>
@@ -93,11 +104,10 @@
                 <img src="/public/img/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
             </div>
             <div class="col-12 col-lg-6 footer-logo2">
-                <span><a href="https://github.com/kepchuk08/web-bhop-stats">Bhop Stats</a> <i>v1.2.0</i> Developed by <a href="https://steamcommunity.com/id/kepchuk/">kepchuk</a> © 2020</span>
+                <span><a href="https://github.com/kepchuk08/web-bhop-stats">Bhop Stats</a> <i>v1.3.0</i> Developed by <a href="https://steamcommunity.com/id/kepchuk/">kepchuk</a> © <?php echo date('Y');?></span>
             </div>
         </div>
     </div>
-
 
     <script type="text/javascript" src="/public/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/public/js/bootstrap.bundle.min.js"></script>

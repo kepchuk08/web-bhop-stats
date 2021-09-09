@@ -16,8 +16,9 @@
         <div class="error-box">
             <div class="error-body text-center">
                 <h1 class="text-color-green">404</h1>
-                <h3>Страница не найдена!</h3>
-                <a href="/" class="btn btn-outline-secondary btn-rounded m-b-40">Вернуться на главную</a> </div>
+                <h3><?=VI_404_TITLE?></h3>
+                <a href="/" class="btn btn-outline-secondary btn-rounded m-b-40"><?=VI_404_SUBMIT_BACK?></a> 
+            </div>
         </div>
     </section>
 </body>

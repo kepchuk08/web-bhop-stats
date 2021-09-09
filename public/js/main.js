@@ -12,45 +12,53 @@ if (document.querySelector(".error-steam")) {
       });
   }
 
-
-function warningClear()
-{
-  swal({
-  title: "Очистить таблицу рекордов?",
-  text: "После очистки данные нельзя будет восстановить!",
-  type: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#DD6B55",
-  confirmButtonText: "Да, очистить!",
-  closeOnConfirm: false
-},
-function(){
-  swal("Deleted!", "Все рекорды очищены.", "success");
-});
+function langselect(select) {
+  /*var string = "";
+  var out = "";
+  if (select === 1) {
+    string = "Русский";
+  } else if (select === 2) {
+    string = "English";
+  } else if (select === 3) {
+    string = "Deutsch";
+  }*/
+  out = document.getElementsByClassName('select-lang');
+  out[0].placeholder = select;
+  return;
 }
 
+function getTrack(select) {
+  var out = "";
+  out = document.getElementsByClassName('view-track');
+  out[0].placeholder = select;
+  return; 
+}
 
-function check_connection_bd(){
-  var host=$('#host').val();
-  var bd_name=$('#bd-name').val();
-  var bd_user=$('#bd-user').val();
-  var bd_password=$('#bd-password').val();
+function getStyle(select) {
+  var out = "";
+  out = document.getElementsByClassName('view-style');
+  out[0].placeholder = select;
+  return; 
+}
+
+function lselect(select) {
   var json;
   event.preventDefault();
   $.ajax({
     type:"POST",
-    url:"ajax",
-    data:"&check_connection_bd=1&host="+host+"&bd-name="+bd_name+"&bd_user="+bd_user+"&bd_password="+bd_password,
-    contentType: false,
-    cache: false,
-    processData: false,
+    url:"/ajax",
+    data:{'selectlang':select},
     success:function(result){
-      console.log(result);
-      json = jQuery.parseJSON(result);
-      swal({
-        text: json.message,
-        icon: json.status,
-      });
+      location.reload();
     }
   });
 }
+
+
+$('#oldcss').on('click', function () {
+    if ( $(this).is(':checked') ) {
+        $("#steamapi").attr("readonly",true);
+    } else {
+        $("#steamapi").attr("readonly",false);
+    }
+})

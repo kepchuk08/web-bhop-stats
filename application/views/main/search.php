@@ -1,19 +1,18 @@
 <div class="row content">
 	<div class="table-home bg-white">
-		<p>Поиск по запросу: <b><?php echo $search;?></b></p>
-		<?php //debug($user);?>
+		<p><?=VI_MAIN_SEARCH_RESULT_TRUE?><b><?php echo $search;?></b></p>
 		<?php if (empty($user)): ?>
-			<h1>Игрок не найден</h1>
+			<h1><?=VI_MAIN_SEARCH_RESULT_FALSE?></h1>
 		<?php else: ?>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
 					<tr>
-						<th scope="col">Ник</th>
-						<th scope="col" class="text-center">Страна</th>
-						<th scope="col" class="text-center">Последнее посещение</th>
-						<th scope="col" class="text-center">Последнея карта</th>
-						<th scope="col" class="text-center">Очков</th>
+						<th scope="col"><?=VI_TABLE_NAME?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_COUNTRY?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_LAST_VISIT?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_LAST_MAP?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_POINT?></th>
 						<th scope="col" class="text-center"></th>
 					</tr>
 				</thead>
@@ -25,7 +24,7 @@
 							<td class="text-center"><?php echo $sistem->corectDate($userItem['lastlogin'])['datediff'] ;?></td>
 							<td class="text-center"><?php echo $sistem->lastMap($userItem['auth']) ;?></td>
 							<td class="text-center"><?php echo round($userItem['points']) ;?></td>
-					        <td class="text-center"><span class="user-about"><a href="/user/<?php echo $userItem['auth']; ?>">Подробнее</a></span></td>
+					        <td class="text-center"><span class="user-about"><a href="/user/<?php echo $userItem['auth']; ?>"><?=VI_MAIN_INDEX_MORE_DETAILED?></a></span></td>
 					    </tr>
 					<?php endforeach;?>
 				</tbody>

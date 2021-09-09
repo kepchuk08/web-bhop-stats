@@ -44,7 +44,7 @@ class MainController extends Controller
 			'sxgeo' => $SxGeo,
 		];
 		
-		$this->view->render('главная страница', $vars);
+		$this->view->render(TITLE_PAGE_HAME, $vars);
 	}
 
 	public function lastrocordsAction()
@@ -59,7 +59,7 @@ class MainController extends Controller
 			'style' => $sistem->style(),
 		];
 
-		$this->view->render('Последние рекорды',$vars);
+		$this->view->render(LASTRECORDS,$vars);
 	}
 
 	public function searchAction()
@@ -77,6 +77,6 @@ class MainController extends Controller
 			'sxgeo' => $SxGeo,
 		];
 
-		$this->view->render('Поиск игрока',$vars);
+		$this->view->render(TITLE_PAGE_SEARCH_PLAYERS,$vars);
 	}
 }

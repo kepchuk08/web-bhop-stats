@@ -7,7 +7,7 @@
     <meta name="description" content="Бхоп статистика сервера"> 
     <meta name="keywords" content="бхоп,bhop,css,cs go">
     <meta name="author" content="Kepchuk">
-    <title>Bhop Stat - Админ панель</title>
+    <title>Bhop Stat :: <?php echo $title;?></title>
     <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
     <link rel="stylesheet" href="/public/css/all.min.css"> 
@@ -28,7 +28,7 @@
                         <div class="container-fluid">
                             <a class="navbar-brand text-logo" href="/">
                                 <img src="/public/img/logo-light.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
-                                        BS - Админ панель
+                                        BS - <?=VI_ADMIN_HED_INDEX_LOGO_TEXT?>
                             </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -36,11 +36,11 @@
                             <div class="collapse navbar-collapse" id="navbarText">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="/">Перейти на сайт</a>
+                                        <a class="nav-link active" aria-current="page" href="/"><?=VI_ADMIN_HED_INDEX_MENU_BACK_SAIT?></a>
                                     </li>
                                 </ul>
                                 <span class="navbar-text">
-                                    <a href="/admin/logout">Выход</a>
+                                    <a href="/admin/logout"><?=VI_ADMIN_HED_INDEX_MENU_LOGOUT?></a>
                                 </span>
                             </div>
                         </div>
@@ -50,13 +50,13 @@
                     <div class="row bg-white padding-20">
                         <ul class="nav justify-content-center">
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="/admin">Стили</a>
+                                <a class="nav-link" aria-current="page" href="/admin"><?=VI_ADMIN_HED_INDEX_MENU_STYLE?></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="/admin/db">База Данных</a>
+                                <a class="nav-link" aria-current="page" href="/admin/db"><?=VI_ADMIN_HED_INDEX_MENU_DB?></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="/admin/admins">Администраторы</a>
+                                <a class="nav-link" aria-current="page" href="/admin/admins"><?=VI_ADMIN_HED_INDEX_MENU_ADMINS?></a>
                             </li>
                         </ul>
                     </div>

@@ -6,34 +6,34 @@
 					<div class="col-12 p-0">
 						<p><h4><?php echo $mapname;?></h4></p>
 						<div class="block-inform">
-							<span>информация</span>
+							<span><?=VI_MAP_INFO_TITLE?></span>
 							<ul class="list-group text-color-112365">
 							  	<li class="list-group-item d-flex justify-content-between align-items-center">
-								    Рекордов
+								    <?=VI_MAP_ALLREC?>
 								    <span class="badge background-color-212529 rounded-pill"><?php echo $mapinfo['AllRecords'];?></span>
 							  	</li>
 							  	<li class="list-group-item d-flex justify-content-between align-items-center">
-								    Основа рекордов
+								    <?=VI_MAP_REC_BASE?>
 								    <span class="badge background-color-212529 rounded-pill"><?php echo $mapinfo['BaseRecords'];?></span>
 							  	</li>
 							  	<li class="list-group-item d-flex justify-content-between align-items-center">
-								    Бонус рекордов
+								    <?=VI_MAP_REC_BONUS?>
 								    <span class="badge background-color-212529 rounded-pill"><?php echo $mapinfo['BonusRecords'];?></span>
 							  	</li>
 							  	<li class="list-group-item d-flex justify-content-between align-items-center">
-								    Прыжков
+								    <?=VI_MAP_ALLJUMP?>
 								    <span class="badge background-color-212529 rounded-pill"><?php echo $mapinfo['AllJumps'];?></span>
 							  	</li>
 							  	<li class="list-group-item d-flex justify-content-between align-items-center">
-								    Стрейфов
+								    <?=VI_MAP_ALLSTREIF?>
 								    <span class="badge background-color-212529 rounded-pill"><?php echo $mapinfo['AllStrafes'];?></span>
 							  	</li>
 							  	<li class="list-group-item d-flex justify-content-between align-items-center">
-								    Ср. синхронизация
+								    <?=VI_MAP_AVERAGE_SYNCHRONIZATION?>
 								    <span class="badge background-color-212529 rounded-pill"><?php echo $mapinfo['AllSync'];?>%</span>
 							  	</li>
 							  	<li class="list-group-item d-flex justify-content-between align-items-center">
-								    Сложность карты
+								    <?=VI_MAP_TIER?>
 								    <span class="badge background-color-212529 rounded-pill"><?php echo $mapinfo['MapsTier'];?></span>
 							  	</li>
 							</ul>
@@ -47,9 +47,9 @@
 						<div class="row">
 						  	<div class="col-12">
 							    <div class="list-group list-group-horizontal" id="list-tab" role="tablist">
-							      	<a class="list-group-item list-group-item-action active" id="list-base-list" data-toggle="list" href="#base" role="tab" aria-controls="home">Основа</a>
-							      	<a class="list-group-item list-group-item-action" id="list-bonus-list" data-toggle="list" href="#bonus" role="tab" aria-controls="bonus">Бонус</a>
-							      	<a class="list-group-item list-group-item-action" id="list-lastrecords-list" data-toggle="list" href="#lastrecords" role="tab" aria-controls="lastrecords">Последние рекорды</a>
+							      	<a class="list-group-item list-group-item-action active" id="list-base-list" data-toggle="list" href="#base" role="tab" aria-controls="home"><?=VI_MAP_TRACK_BASE?></a>
+							      	<a class="list-group-item list-group-item-action" id="list-bonus-list" data-toggle="list" href="#bonus" role="tab" aria-controls="bonus"><?=VI_MAP_TRACK_BONUS?></a>
+							      	<a class="list-group-item list-group-item-action" id="list-lastrecords-list" data-toggle="list" href="#lastrecords" role="tab" aria-controls="lastrecords"><?=LASTRECORDS?></a>
 							    </div>
 						  	</div>
 						  	<div class="col-12">
@@ -57,7 +57,7 @@
 						    	<div class="tab-content" id="nav-tabContent">
       								<div class="tab-pane fade show active" id="base" role="tabpanel" aria-labelledby="list-base-list">
       									<div class="row">
-      										<h3>ТОП РЕКОРДЫ</h3>
+      										<h3><?=VI_MAP_TOP_REC?></h3>
       										<?php foreach ($stylemapbase as $stylerecordItem):?>
 				      							<div class="col-3 col-lg-2 pd-5">
 				      								<div class="section">
@@ -65,7 +65,7 @@
 				      										<div class="col-12 block-info-text">
 				      											<?php
 				      											if (empty($style[$stylerecordItem['style']])) {
-												    				echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Данный стиль отсутствует в конфигурации"></i>';
+												    				echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';
 												    			}else{
 												    				echo $style[$stylerecordItem['style']]['name'];
 												    			}
@@ -87,7 +87,7 @@
       								<div class="tab-pane fade" id="bonus" role="tabpanel" aria-labelledby="list-bonus-list">
       									<div class="row">
       										<?php if (empty($stylemapbonus)): ?>
-      											<h2>Нет ни одного бонусного рекорда</h2>
+      											<h2><?=VI_MAP_MAPINFO_NO_REC_BONUS?></h2>
       										<?php else: ?>
 				      						<?php foreach ($stylemapbonus as $stylemapbonusItem):?>
 				      						<div class="col-3 col-lg-2 pd-5">
@@ -96,7 +96,7 @@
 				      										<div class="col-12 block-info-text">
 				      											<?php
 				      											if (empty($style[$stylemapbonusItem['style']])) {
-												    				echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Данный стиль отсутствует в конфигурации"></i>';
+												    				echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';
 												    			}else{
 												    				echo $style[$stylemapbonusItem['style']]['name'];
 												    			}
@@ -104,8 +104,8 @@
 				      										</div>
 				      										<div class="col-12 block-info-value">
 				      											<?php 
-				      											echo $sistem->userName($sistem->toprecbase($mapname, $stylemapbonusItem['style'])['auth']);
-				      											echo '<br>'.$sistem->secToStr(round($sistem->toprecbase($mapname, $stylemapbonusItem['style'])['time']));
+				      											echo $sistem->userName($sistem->toprecbonus($mapname, $stylemapbonusItem['style'])['auth']);
+				      											echo '<br>'.$sistem->secToStr(round($sistem->toprecbonus($mapname, $stylemapbonusItem['style'])['time']));
 				      											?>
 				      										</div>
 				      									</div>
@@ -117,18 +117,18 @@
       								</div>
       								<div class="tab-pane fade" id="lastrecords" role="tabpanel" aria-labelledby="list-lastrecords-list">
       									<div class="row padding-20 section_last">
-				      						<span>Последние рекорды</span>
+				      						<span><?=LASTRECORDS?></span>
 				      						<div class="table-responsive font-300">
 									      		<table class="table">
 										            <thead>
 										              	<tr>
-										              		<th scope="col">Игрок</th>
-										              		<th scope="col" class="text-center">Время</th>
-										              		<th scope="col" class="text-center">Стиль</th>
-											                <th scope="col" class="text-center">Прыжков</th>
-											                <th scope="col" class="text-center">Стрефов</th>
-											                <th scope="col" class="text-center">Синх.</th>
-											                <th scope="col" class="text-center">Очков</th>
+										              		<th scope="col"><?=VI_TABLE_NAME?></th>
+										              		<th scope="col" class="text-center"><?=VI_TABLE_TIME?></th>
+										              		<th scope="col" class="text-center"><?=VI_TABLE_STYLE?></th>
+											                <th scope="col" class="text-center"><?=VI_TABLE_JUMP?></th>
+											                <th scope="col" class="text-center"><?=VI_TABLE_STREIF?></th>
+											                <th scope="col" class="text-center"><?=VI_TABLE_SINH?></th>
+											                <th scope="col" class="text-center"><?=VI_TABLE_POINT?></th>
 										              	</tr>
 										            </thead>
 										            <tbody class="table-tr">
@@ -139,7 +139,7 @@
 													            <td class="text-center">
 													            	<?php
 																		if (empty($style[$lastRecordsMapItem['style']])) {
-														    				echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Данный стиль отсутствует в конфигурации"></i>';
+														    				echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';
 														    			}else{
 														    				echo $style[$lastRecordsMapItem['style']]['name'];
 														    			}
@@ -153,7 +153,7 @@
 										              	<?php endforeach;?>
 										            </tbody>
 									          	</table>
-									          	<center><a href="<?php echo $this->route['map']; ?>/allrecords" class="btn_all_records">все рекорды</a></center>
+									          	<center><a href="<?php echo $this->route['map']; ?>/allrecords" class="btn_all_records"><?=VI_USER_INDEX_SYBMIT_ALLREC?></a></center>
 								        	</div>
 			      						</div>
       								</div>

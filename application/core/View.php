@@ -48,6 +48,16 @@ class View {
 		exit(json_encode(['status' => $status, 'message' => $message]));
 	}
 
+	public function messageInstall($status, $title, $text, $confirmButtonText, $cancelButtonText) {
+		exit(json_encode([
+			'status' => $status, 
+			'title' => $title,
+			'text' => $text,
+			'confirmButtonText' => $confirmButtonText,
+			'cancelButtonText' => $cancelButtonText]
+		));
+	}
+
 	public function location($url) {
 		exit(json_encode(['url' => $url]));
 	}

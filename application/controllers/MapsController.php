@@ -27,7 +27,7 @@ class MapsController extends Controller
 			'style' => $sistem->style(),
 		];
 
-		$this->view->render('Карты',$vars);
+		$this->view->render(TITLE_PAGE_MAPS,$vars);
 	}
 
 	public function mapinfoAction()
@@ -47,7 +47,7 @@ class MapsController extends Controller
 			'lastRecordsMap' => $this->model->lastRecordsMap($this->route['map']),
 		];
 
-		$this->view->render('Карта',$vars);
+		$this->view->render(TITLE_PAGE_MAP.$this->route['map'],$vars);
 	}
 
 	public function allracordsAction()
@@ -82,6 +82,6 @@ class MapsController extends Controller
 			$vars['records'] = $this->model->allrecords($this->route['map']);
 		}
 
-		$this->view->render('Все рекорды',$vars);
+		$this->view->render(TITLE_PAGE_MAP_ALLRECORDS.$this->route['map'],$vars);
 	}
 }

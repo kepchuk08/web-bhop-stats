@@ -18,7 +18,7 @@ $(document).ready(function() {
 				}else if(json.status == 'install'){
 					Swal.fire({
 						icon: json.status,
-						text: json.message,
+						text: json.title,
 					});
 					const swalWithBootstrapButtons = Swal.mixin({
 						customClass: {
@@ -29,12 +29,12 @@ $(document).ready(function() {
 					});
 
 					swalWithBootstrapButtons.fire({
-						title: 'Установка завершена',
-						text: "Теперь вы можете пользоваться Bhop Stats, так же вы можете перейти в админ панель и добавить новые стили",
+						title: json.title,
+						text: json.text,
 						icon: 'success',
 						showCancelButton: true,
-						confirmButtonText: 'Перейти на сайт',
-						cancelButtonText: 'Админ панель',
+						confirmButtonText: json.confirmButtonText,
+						cancelButtonText: json.cancelButtonText,
 						reverseButtons: true
 					}).then((result) => {
 						if (result.isConfirmed) {

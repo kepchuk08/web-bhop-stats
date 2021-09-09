@@ -24,12 +24,20 @@ class Install
         $json = json_decode(file_get_contents($json_file),TRUE);
 
         if ((isset($_SERVER['REQUEST_SCHEME']) AND $_SERVER['REQUEST_SCHEME'] === 'https') OR (isset($_SERVER['HTTPS']) AND $_SERVER['HTTPS'] === 'on')){
-        $protocol = 'https';
-        }
-        else{
+            $protocol = 'https';
+        }else{
             $protocol = 'http';
         }
+
         $url = $protocol.'://'.$_SERVER['SERVER_NAME'].'/admin';
+
+        if (empty($post['oldcss'])) {
+            $steamapikey = $post['steamapikey'];
+            $cssold = 0;
+        }else{
+            $steamapikey = '';
+            $cssold = 1;
+        }
 
         try {
             $dbh = new PDO('mysql:host='.$post['host'].';dbname='.$post['bd-name'], $post['bd-user'], $post['bd-password']);
@@ -42,7 +50,9 @@ class Install
                     'user' => $post['bd-user'],
                     'password' => $post['bd-password']]
                 ],
-                'steamapikey' => $post['steamapikey'],
+                'oldcss' => $cssold,
+                'language' => $post['getlanguage'],
+                'steamapikey' => $steamapikey,
                 'domainname' => $url,
                 'logoutpage' => $url,
                 'loginpage' => $url,
@@ -66,10 +76,9 @@ class Install
                 ]
             ];
             file_put_contents($json_file, json_encode($jsonFile));
-            $this->success = 'файл создан!';
             return true;
         } catch (\Throwable $e) {
-            $this->error = 'Содинение с база данных не установленно!';
+            $this->error = ALERT_INSTALL_ERROR_CONNECTION_BD;
             return false;
         }
     }

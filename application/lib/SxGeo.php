@@ -262,7 +262,11 @@ class SxGeo {
 		return $this->max_city ? $this->getCity($ip) : $this->getCountry($ip);
 	}
 	public function getCountry($ip){
-		$ip = long2ip($ip);
+		$point = '.';
+		if (!strpos($ip,$point)) {
+			$ip = long2ip($ip);
+		}
+		//$ip = long2ip($ip);
 		if($this->max_city) {
 			$tmp = $this->parseCity($this->get_num($ip));
 			return $tmp['country']['iso'];

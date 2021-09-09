@@ -30,7 +30,7 @@ class Admin extends Model
 				}
     		}
 		}
-		$this->error = 'Логин или пароль указан неверно';
+		$this->error = MODEL_ADMIN_ALERT_AUTH_ERROR;
 		return false;
 	}
 
@@ -91,7 +91,7 @@ class Admin extends Model
 			if ($json['style'][$id]['id'] == $post['id-style']) {
 				$json['style'][$id]['name'] = $post['name-style'];
 				file_put_contents($json_file, json_encode($json));
-				$this->success = 'Название стиля изменено на '.$style;
+				$this->success = MODEL_ADMIN_ALERT_SUCCESS_STYLE_EDIT.$post['name-style'];
 				return true;
 		        break;
 		    }
@@ -109,7 +109,7 @@ class Admin extends Model
 		];
 		array_push($json['style'], $addStyle);
 		file_put_contents($json_file, json_encode($json));
-		$this->success = 'Стиль '.$style.' добавлен';
+		$this->success = MODEL_ADMIN_ALERT_SUCCESS_STYLE_ADD.$post['add-styleName'];
 
 		return true;
 	}
@@ -140,7 +140,7 @@ class Admin extends Model
 		];
 		array_push($json['admins'], $addAdmin);
 		file_put_contents($json_file, json_encode($json));
-		$this->success = $post['addAdmin-nik'].' добавлен в администраторы';
+		$this->success = $post['addAdmin-nik'].MODEL_ADMIN_ADMINS_ALERT_SUCCESS_ADD;
 
 		return true;
 	}
@@ -157,7 +157,7 @@ class Admin extends Model
 				$json['admins'][$id]['pass'] = $post['admin-Pass'];
 				$json['admins'][$id]['steamid'] = $post['admin-Steam'];
 				file_put_contents($json_file, json_encode($json));
-				$this->success = 'Данные администратора '.$post['admin-Login'].' изменены';
+				$this->success = MODEL_ADMIN_ADMINS_ALERT_SUCCESS_EDIT;
 				return true;
 		        break;
 		    }
@@ -200,7 +200,7 @@ class Admin extends Model
 	public function clearDB()
 	{
 		$this->db->row('DELETE FROM `playertimes`');
-		$this->success = 'Все рекорды удалены!';
+		$this->success = MODEL_ADMIN_ALERT_SUCCESS_CLEAR;
 	}
 }
  ?>

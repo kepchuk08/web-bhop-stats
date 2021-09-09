@@ -26,9 +26,9 @@ class InstallController extends Controller
             if (!$this->model->installForm($_POST)) {
                 $this->view->message('error', $this->model->error);
             }
-            $this->view->message('install', $this->model->success);
+            $this->view->messageInstall('install', VI_INSTALL_SUCCESS_TITLE,VI_INSTALL_SUCCESS_CONTENT,VI_INSTALL_SUCCESS_SYBMIT_SITE,VI_INSTALL_SUCCESS_SYBMIT_ADMIN_PANEL);
         }   
         
-        $this->view->render('Установка Bhop Stats');
+        $this->view->render(VI_INSTALL_HEAD_TITLE.' Bhop Stats');
     }
 }

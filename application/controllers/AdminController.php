@@ -62,7 +62,7 @@ class AdminController extends Controller
 			$this->view->location('admin');
 		}
 
-		$this->view->render('Админ панель');
+		$this->view->render(TITLE_PAGE_ADMIN_AUTH);
 	}
 
 	public function logoutAction() 
@@ -98,7 +98,7 @@ class AdminController extends Controller
 			'style' => $this->model->styleList(),
 		];
 
-		$this->view->render('Админ панель', $vars);
+		$this->view->render(TITLE_PAGE_ADMIN_STYLE, $vars);
 	}
 
 	public function databaseAction() 
@@ -117,7 +117,7 @@ class AdminController extends Controller
 			'size' => $this->model->DBsize(),
 		];
 		
-		$this->view->render('Админ панель', $vars);
+		$this->view->render(TITLE_PAGE_ADMIN_DB, $vars);
 	}
 
 	public function adminsAction() 
@@ -145,7 +145,7 @@ class AdminController extends Controller
 			'admins' => $this->model->getAdmins(),
 		];
 		
-		$this->view->render('Админ панель', $vars);
+		$this->view->render(TITLE_PAGE_ADMIN_ADMINS, $vars);
 	}
 
 	public function deleteAction() 
@@ -156,14 +156,5 @@ class AdminController extends Controller
 
 		$this->model->deleteAdmin($this->route['adminid']);
 		$this->view->redirect('admin/admins');
-	}
-
-	public function settingsAction() 
-	{
-		if (!$this->model->check_session($_SESSION)) {
-			$this->view->redirect('admin/login');
-		}
-		
-		$this->view->render('Админ панель');
 	}
 }

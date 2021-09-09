@@ -1,15 +1,15 @@
 <div class="row content">
 	<div class="table-home bg-white">
-		<p>ВСЕ КАРТЫ СЕРВЕРА</p>
+		<p><?=VI_MAP_TITLE?></p>
 		<div class="table-responsive">
 			<table class="table table_sort">
 				<thead>
 					<tr>
-						<th scope="col">Карта</th>
-						<th scope="col" class="text-center">Количество рекордов</th>
-						<th scope="col" class="text-center">Популярный стиль</th>
-						<th scope="col" class="text-center">Прыжков</th>
-						<th scope="col" class="text-center">Стрейфов</th>
+						<th scope="col"><?=VI_TABLE_MAP?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_NUMBER_OF_RECORDS?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_POPULAR_STYLE?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_JUMP?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_STREIF?></th>
 						<th scope="col"></th>
 					</tr>
 				</thead>
@@ -21,7 +21,7 @@
 							<td class="text-center">
 								<?php
 									if (empty($style[$sistem->popularStyle($mapItem['map'])])) {
-										echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Данный стиль отсутствует в конфигурации"></i>';
+										echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';
 									}else{
 										echo $style[$sistem->popularStyle($mapItem['map'])]['name'];
 									}
@@ -29,7 +29,7 @@
 							</td>
 							<td class="text-center"><?php echo $mapItem['jumps'];?></td>
 							<td class="text-center"><?php echo $mapItem['strafes'];?></td>
-					        <td class="text-center"><span class="user-about"><a href="/maps/<?php echo $mapItem['map'];?>">Подробнее</a></span></td>
+					        <td class="text-center"><span class="user-about"><a href="/maps/<?php echo $mapItem['map'];?>"><?=VI_MAIN_INDEX_MORE_DETAILED?></a></span></td>
 					    </tr>
 					<?php endforeach;?>
 				</tbody>

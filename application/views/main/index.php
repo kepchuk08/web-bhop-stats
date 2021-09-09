@@ -1,16 +1,16 @@
 <div class="row content">
 	<div class="table-home bg-white mg-bottom-20">
-		<p>ТОП ИГРОКИ</p>
+		<p><?=VI_MAIN_INDEX_TOP_PLAYER?></p>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
 					<tr>
 						<th scope="col">#</th>
-						<th scope="col">Ник</th>
-						<th scope="col" class="text-center">Страна</th>
-						<th scope="col" class="text-center">Последнее посещение</th>
-						<th scope="col" class="text-center">Последнея карта</th>
-						<th scope="col" class="text-center">Очков</th>
+						<th scope="col"><?=VI_TABLE_NAME?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_COUNTRY?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_LAST_VISIT?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_LAST_MAP?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_POINT?></th>
 						<th scope="col"></th>
 					</tr>
 				</thead>
@@ -23,7 +23,7 @@
 							<td class="text-center"><?php echo $sistem->corectDate($userItem['lastlogin'])['datediff'] ;?></td>
 							<td class="text-center"><?php echo $sistem->lastMap($userItem['auth']) ;?></td>
 							<td class="text-center"><?php echo round($userItem['points']) ;?></td>
-					        <td class="text-center"><span class="user-about"><a href="/user/<?php echo $userItem['auth']; ?>">Подробнее</a></span></td>
+					        <td class="text-center"><span class="user-about"><a href="/user/<?php echo $userItem['auth']; ?>"><?=VI_MAIN_INDEX_MORE_DETAILED?></a></span></td>
 					    </tr>
 					    <?php $id++;?>
 					<?php endforeach;?>

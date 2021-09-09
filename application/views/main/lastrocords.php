@@ -1,20 +1,20 @@
 <div class="row content">
 	<div class="table-home bg-white">
-		<p>ПОСТЛЕДНИЕ 100 РЕКОРДОВ</p>
+		<p><?=VI_MAIN_LASTRECORDS_LAST_PLAYER?></p>
 		<div class="table-responsive">
 			<table class="table">
 				<thead>
 					<tr>
-						<th scope="col">Ник</th>
-						<th scope="col">Карта</th>
-						<th scope="col" class="text-center">Дата</th>
-						<th scope="col" class="text-center">Время</th>
-						<th scope="col" class="text-center">Путь</th>
-						<th scope="col" class="text-center">Стиль</th>
-						<th scope="col" class="text-center">Прыжков</th>
-						<th scope="col" class="text-center">Стрейфов</th>
-						<th scope="col" class="text-center">Синх.</th>
-						<th scope="col" class="text-center">Очков</th>
+						<th scope="col"><?=VI_TABLE_NAME?></th>
+						<th scope="col"><?=VI_TABLE_MAP?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_DATA?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_TIME?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_TRACK?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_STYLE?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_JUMP?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_STREIF?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_SINH?></th>
+						<th scope="col" class="text-center"><?=VI_TABLE_POINT?></th>
 					</tr>
 				</thead>
 				<tbody class="table-tr">
@@ -28,7 +28,7 @@
 							<td class="text-center">
 								<?php 
 									if (empty($style[$lastrecordsItem['style']])) {
-										echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="Данный стиль отсутствует в конфигурации"></i>';
+										echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';
 									}else{
 										echo $style[$lastrecordsItem['style']]['name'];
 									}

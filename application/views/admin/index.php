@@ -2,12 +2,12 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-5 col-12">
 			<div class="table-home bg-white mg-bottom-20 content">
-				<h3 class="text-center">Стили</h3>
+				<h3 class="text-center"><?=VI_ADMIN_INDEX_TITLE_PAGE?></h3>
 				<table class="table">
 					<thead>
 						<tr>
 							<th scope="col" class="text-center">Id</th>
-							<th scope="col">Название</th>
+							<th scope="col"><?=VI_ADMIN_INDEX_TABLE_NAME?></th>
 							<th scope="col" class="text-center"></th>
 						</tr>
 					</thead>
@@ -21,14 +21,14 @@
 										<input type="hidden" name="id-style" value="<?php echo $style['arraystyle'][$id]['id'];?>">
 									</td>
 									<td class="text-center">
-										<button type="sybmit" class="btn btn-outline-secondary">Изменить</button>
+										<button type="sybmit" class="btn btn-outline-secondary"><?=VI_ADMIN_INDEX_SUBMIT_EDIT?></button>
 									</td>
 								</form>
 							</tr>
 						<?php endfor;?>
 					</tbody>
 				</table>
-				<center><button type="button" class="btn_all_records" data-bs-toggle="modal" data-bs-target="#addStyleModal">Добавить стиль</button></center>
+				<center><button type="button" class="btn_all_records" data-bs-toggle="modal" data-bs-target="#addStyleModal"><?=VI_ADMIN_INDEX_SUBMIT_ADD_STYLE?></button></center>
 			</div>
 		</div>
 	</div>
@@ -37,7 +37,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="addStyleModalLabel">Добавить стиль</h5>
+				<h5 class="modal-title" id="addStyleModalLabel"><?=VI_ADMIN_INDEX_SUBMIT_ADD_STYLE?></h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
 			</div>
 			<form action="/admin" method="POST">
@@ -47,13 +47,13 @@
 						<input class="form-control" name="add-styleId" type="text" value="<?php echo $style['count'];?>" placeholder="<?php echo $style['count'];?>" readonly>
 					</div>
 					<div class="mb-3">
-						<label for="message-text" class="col-form-label">Название:</label>
+						<label for="message-text" class="col-form-label"><?=VI_ADMIN_INDEX_TABLE_NAME?>:</label>
 						<input class="form-control" name="add-styleName" type="text">
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-					<button type="sybmit" data-bs-dismiss="modal" class="btn btn-primary" id="trigger">Добавить стиль</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?=VI_ADMIN_INDEX_SUBMIT_CLOUS?></button>
+					<button type="sybmit" data-bs-dismiss="modal" class="btn btn-primary" id="trigger"><?=VI_ADMIN_INDEX_SUBMIT_ADD_STYLE?></button>
 				</div>
 			</form>
 		</div>

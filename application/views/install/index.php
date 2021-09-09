@@ -8,77 +8,79 @@
 		<div class="row justify-content-center ">
 			<div class="col-10 col-lg-4 pd-5 bg-white table-home">
 				<form action="install" method="post">
-					<h1 class="text-center">Установка</h1>
-					<p class="h3">Подключение базы данных таймера</p>
+					<h1 class="text-center"><?=VI_INSTALL_HEAD_TITLE?></h1>
+					<p class="h3"><?=VI_INSTALL_LANG_TEXT?></p>
+					<div class="input-group mb-3 justify-content-center">
+						<div class="col-sm-10 d-flex">
+							<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><?=VI_INSTALL_LANG_SYBMIT?></button>
+							<ul class="dropdown-menu">
+								<li>
+									<input type="radio" class="btn-check" name="getlanguage" id="ru" value="ru" required>
+									<label class="btn" for="ru" onclick="langselect('Русский')">Русский</label>
+								</li>
+								<li>
+									<input type="radio" class="btn-check" name="getlanguage" id="en" value="en">
+									<label class="btn" for="en" onclick="langselect('English')">English</label>
+								</li>
+								<li>
+									<input type="radio" class="btn-check" name="getlanguage" id="de" value="de">
+									<label class="btn" for="de" onclick="langselect('Deutsch')">Deutsch</label>
+								</li>
+							</ul>
+							<input type="text" class="form-control select-lang" placeholder="..." readonly>
+						</div>
+						
+					</div>
+					<p class="h3"><?=VI_INSTALL_CONNECT_DB_TEXT?></p>
 					<div class="row mb-3 justify-content-center">
 						<div class="col-sm-10">
-							<input type="text" id="host" name="host" class="form-control" placeholder="localhost">
+							<input type="text" id="host" name="host" class="form-control" placeholder="<?=VI_INSTALL_FORM_HOST?>" required>
 						</div>
 						<div class="col-sm-10">
-							<input type="text" id="bd-name" name="bd-name" class="form-control" placeholder="Название базы данных">
+							<input type="text" id="bd-name" name="bd-name" class="form-control" placeholder="<?=VI_INSTALL_FORM_NAME?>" required>
 						</div>
 						<div class="col-sm-10">
-							<input type="text" id="bd-user" name="bd-user" class="form-control" placeholder="Имя пользователя">
+							<input type="text" id="bd-user" name="bd-user" class="form-control" placeholder="<?=VI_INSTALL_FORM_USER?>" required>
 						</div>
 						<div class="col-sm-10">
-							<input type="password" id="bd-password" name="bd-password" class="form-control" placeholder="Пароль">
+							<input type="password" id="bd-password" name="bd-password" class="form-control" placeholder="<?=VI_INSTALL_FORM_PASS?>" required>
 						</div>
 					</div>
 					<p class="h3">Steam Web API Key</p>
 					<figcaption class="blockquote-footer">
-    					Получить API Key вы можете нажав <a href="https://steamcommunity.com/dev" target="_blank">ЗДЕСЬ</a>
+    					<?=VI_INSTALL_TEXT_STEAMAPI?>
 					</figcaption>
 					<div class="row mb-3 justify-content-center">
 						<div class="col-sm-10">
-							<input type="text" name="steamapikey" class="form-control" placeholder="Ключ api стима">
+							<input type="checkbox" class="btn-check" id="oldcss" name="oldcss" value="1" autocomplete="off">
+							<label class="btn btn-outline-secondary" for="oldcss" data-bs-toggle="tooltip" title="<?=VI_INSTALL_CSSOLD_TITLE?>">CS:S v34</label><br>
 						</div>
 					</div>
-					<p class="h3">Администратор</p>
 					<div class="row mb-3 justify-content-center">
 						<div class="col-sm-10">
-							<input type="text" name="admin-login" class="form-control" placeholder="Логин">
+							<input type="text" id="steamapi" name="steamapikey" class="form-control" placeholder="<?=VI_INSTALL_FORM_STEAMAPI?>" >
+						</div>
+					</div>
+					<p class="h3"><?=VI_INSTALL_ADD_ADMIN_TEXT?></p>
+					<div class="row mb-3 justify-content-center">
+						<div class="col-sm-10">
+							<input type="text" name="admin-login" class="form-control" placeholder="<?=VI_INSTALL_FORM_ADMIN_LOGIN?>" required>
 						</div>
 						<div class="col-sm-10">
-							<input type="password" name="admin-password" class="form-control" placeholder="Пароль">
+							<input type="password" name="admin-password" class="form-control" placeholder="<?=VI_INSTALL_FORM_ADMIN_PASS?>" required>
 						</div>
 						<div class="col-sm-10 d-flex">
-							<button class="btn btn-outline-secondary" type="button" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Подсказка:</em><br>STEAM_X:X:XXXXX<br>[U:X:XXXXX]<br>STEAMID64"><i class="fas fa-info-circle"></i></button>
-							<input type="text" name="admin-steamid" class="form-control" placeholder="SteamID">
+
+							<button class="btn btn-outline-secondary" type="button" data-bs-toggle="tooltip" data-bs-html="true" title="<?=HED_SEARCH_TITLE?>"><i class="fas fa-info-circle"></i></button>
+							<input type="text" name="admin-steamid" class="form-control" placeholder="<?=VI_INSTALL_FORM_ADMIN_STEAMID?>">
 						</div>
 					</div>
 					
 					<div class="input-group justify-content-center">
-						<button type="submit" class="btn btn-outline-secondary" name="submit">Установить</button>
+						<button type="submit" class="btn btn-outline-secondary" name="submit"><?=VI_INSTALL_FORM_SYBMIT?></button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-
-/*function check_connection_bd(){
-	var host=$('#host').val();
-	var bd_name=$('#bd-name').val();
-	var bd_user=$('#bd-user').val();
-	var bd_password=$('#bd-password').val();
-	var json;
-	event.preventDefault();
-	$.ajax({
-		type:"POST",
-		url:"ajax",
-		data:"&check_connection_bd=1&host="+host+"&bd-name="+bd_name+"&bd_user="+bd_user+"&bd_password="+bd_password,
-		contentType: true,
-		cache: false,
-		processData: false,
-		success:function(result){
-			console.log(result);
-			json = jQuery.parseJSON(result);
-			swal({
-				text: json.message,
-				icon: json.status,
-			});
-		}
-	});
-}*/
-</script>

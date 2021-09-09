@@ -311,8 +311,10 @@ class SteamAPI {
 	{
 		$key_account = self::getSteamID64();
 	  	$url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$this->json['steamapikey']."&steamids=".$key_account."&format=json";
+
 	  	$data = file_get_contents($url);
 	  	$information = json_decode($data, true);
+
 	  	if (empty($information['response']['players'][0])) {
 	  		return false;
 	  	}
