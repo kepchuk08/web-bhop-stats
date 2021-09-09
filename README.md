@@ -19,12 +19,12 @@ Apache
 If there are more of your styles on the server than in the standard config ** * shavit-styles. cfg***, then you need to add these styles in the admin panel, new styles must be specified in the order in which they are in shavit-styles.cfg
   
 ## Realization
-> :white_check_mark: Output of all players(Profile player statistics)
-> :white_check_mark: Output of all maps(Map statistics profile)
-> :white_check_mark: Search by player 
-> :white_check_mark: Admin panel(Configuring styles, databases, administrators)
-> :white_check_mark: Automatic installation of the engine 
-> :white_check_mark: Localization 
-> :black_square_button: Binding with SourceBans 
-> :black_square_button: Binding with Shop  
+> :white_check_mark: Output of all players(Profile player statistics)  
+> :white_check_mark: Output of all maps(Map statistics profile)  
+> :white_check_mark: Search by player  
+> :white_check_mark: Admin panel(Configuring styles, databases, administrators)  
+> :white_check_mark: Automatic installation of the engine  
+> :white_check_mark: Localization  
+> :black_square_button: Binding with SourceBans  
+> :black_square_button: Binding with Shop   
 ## [Demo](https://demo.game-lab.su/)
