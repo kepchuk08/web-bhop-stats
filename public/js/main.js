@@ -27,18 +27,19 @@ function langselect(select) {
   return;
 }
 
-function getTrack(select) {
+function getTrack(select, value) {
   var out = "";
   out = document.getElementsByClassName('view-track');
   out[0].placeholder = select;
+
+  var value = $('#track').val(value);
   return; 
 }
 
 function getStyle(select) {
-  var out = "";
-  out = document.getElementsByClassName('view-style');
-  out[0].placeholder = select;
-  return; 
+  var text = $('#style-'+select).text();
+  var textedit = $('.view-style').val(text);
+
 }
 
 function lselect(select) {

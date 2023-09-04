@@ -22,7 +22,7 @@
 					</div>
 					<div class="input-group justify-content-center">
 						<button type="submit" class="btn btn-outline-secondary" name="submit"><?=VI_ADMIN_SYBMIT_ENTER?></button>
-						<a href="/auth" class="btn btn-outline-secondary"><?=VI_ADMIN_SYBMIT_STEAM?></a>
+						<?php if($check):?><a href="/auth" class="btn btn-outline-secondary"><?=VI_ADMIN_SYBMIT_STEAM?></a><?php endif?>
 					</div>
 				</form>
 			</div>

@@ -49,7 +49,7 @@ class Main extends Model
 
 	public function lastrecords()
 	{
-		$result = $this->db->row("SELECT `auth`,`map`,`time`,`jumps`,`style`,`date`,`strafes`,`sync`,`points`,`track` FROM playertimes ORDER BY `date` DESC LIMIT 100");
+		$result = $this->db->row("SELECT `id`, `auth`,`map`,`time`,`jumps`,`style`,`date`,`strafes`,`sync`,`points`,`track` FROM `playertimes` ORDER BY `date` DESC LIMIT 100");
 
 		return $result;
 	}
@@ -104,7 +104,7 @@ class Main extends Model
 			return $result;
 
 		}else{
-			if (!preg_match('/[%20]+/', $id)) {
+			if (!preg_match('/https(.)+/', $id)) {
 				$params = [
 					'name' => $id,
 				];

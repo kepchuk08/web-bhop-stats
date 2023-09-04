@@ -16,12 +16,12 @@
 				</thead>
 				<tbody class="table-tr">
 					<?php foreach ($users as $userItem):?>
-					    <tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="<?php echo $sistem->corectDate($userItem['lastlogin'])['title'] ;?>">
+					    <tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="<?php echo $system->expand_date($userItem['lastlogin']) ;?>">
 							<th scope="row"><?php echo $id; ?></th>
 							<td><?php echo $userItem['name']; ?></td>
 							<td class="text-center"><img src="/public/img/flags/<?php echo mb_strtolower($sxgeo->getCountry($userItem['ip']));?>.png"></td>
-							<td class="text-center"><?php echo $sistem->corectDate($userItem['lastlogin'])['datediff'] ;?></td>
-							<td class="text-center"><?php echo $sistem->lastMap($userItem['auth']) ;?></td>
+							<td class="text-center"><?php echo $system->expand_date($userItem['lastlogin'], 5) ;?></td>
+							<td class="text-center"><?php echo $system->lastMap($userItem['auth']) ;?></td>
 							<td class="text-center"><?php echo round($userItem['points']) ;?></td>
 					        <td class="text-center"><span class="user-about"><a href="/user/<?php echo $userItem['auth']; ?>"><?=VI_MAIN_INDEX_MORE_DETAILED?></a></span></td>
 					    </tr>

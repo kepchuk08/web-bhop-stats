@@ -60,25 +60,26 @@
 				                    	<input type="text" class="form-control view-track" placeholder="<?=VI_TABLE_TRACK?>" readonly> 
 										<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><?=VI_TABLE_STYLE?></button>
 										<ul class="dropdown-menu">
-											<?php for ($id = 0; $id < $flstyle['count']; $id++):?>
-											<li class="dropdown-item">
-												<input type="radio" class="btn-check" name="style" id="style<?php echo $flstyle['arraystyle'][$id]['id'];?>" value="<?php echo $flstyle['arraystyle'][$id]['id'];?>" <?php if ($flstyle['arraystyle'][$id]['id'] == 0){echo 'checked';}?>>
-												<label class="btn" for="style<?php echo $flstyle['arraystyle'][$id]['id'];?>" onclick="getStyle('<?php echo $flstyle['arraystyle'][$id]['name'];?>')"><?php echo $flstyle['arraystyle'][$id]['name'];?></label>
-											</li>
-											<?php endfor;?>
+											<?php foreach ($flstyle as $key => $value): ?>
+												<li class="dropdown-item">
+													<input type="radio" class="btn-check" id="style<?php echo $key;?>" value="<?php echo $key;?>" <?php if ($key == 0){echo 'checked';}?>>
+													<label class="btn" for="style<?php echo $key;?>" onclick="getStyle(<?php echo $key;?>)" id="style-<?php echo $key;?>"><?php echo $value;?></label>
+												</li>
+											<?php endforeach ?>
 										</ul>
 										<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><?=VI_TABLE_TRACK?></button>
 										<ul class="dropdown-menu">
 											<li class="dropdown-item">
-												<input type="radio" class="btn-check" name="track" id="track1" value="0" checked >
-												<label class="btn" for="track1" onclick="getTrack('<?=VI_MAP_TRACK_BASE?>')"><?=VI_MAP_TRACK_BASE?></label>
+												<input type="radio" class="btn-check" id="track1" value="0" checked >
+												<label class="btn" for="track1" onclick="getTrack('<?=VI_MAP_TRACK_BASE?>', 0)"><?=VI_MAP_TRACK_BASE?></label>
 											</li>
 											<li class="dropdown-item">
-												<input type="radio" class="btn-check" name="track" id="track2" value="1">
-												<label class="btn" for="track2" onclick="getTrack('<?=VI_MAP_TRACK_BONUS?>')"><?=VI_MAP_TRACK_BONUS?></label>
+												<input type="radio" class="btn-check" id="track2" value="1">
+												<label class="btn" for="track2" onclick="getTrack('<?=VI_MAP_TRACK_BONUS?>', 1)"><?=VI_MAP_TRACK_BONUS?></label>
 											</li>
 										</ul>
-				                        <button class="btn btn-outline-secondary" type="submit" name="submit"><?=HED_SEARCH_submit?></button>
+										<input type="hidden" id="track" value="">
+				                        <button class="btn btn-outline-secondary" onclick="allrecords_search('<?php echo $this->route['map'];?>', <?php echo $key;?>)"><?=HED_SEARCH_submit?></button>
 				                    </div>
 				                </form>
 							</div>
@@ -100,28 +101,8 @@
 										<th scope="col" class="text-center"><?=VI_TABLE_POINT?></th>
 									</tr>
 								</thead>
-								<tbody class="table-tr">
-									<?php foreach ($records as $recordsItem):?>
-										<tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="<?php echo $sistem->corectDate($recordsItem['date'])['title'] ;?>">
-											<td><?php echo $sistem->userName($recordsItem['auth']);?></td>
-											<td class="text-center"><?php echo $sistem->corectDate($recordsItem['date'])['datediff'];?></td>
-											<td class="text-center"><?php echo $sistem->secToStr(round($recordsItem['time']));?></td>
-											<td class="text-center"><?php echo $sistem->track($recordsItem['track']);?></td>
-											<td class="text-center">
-												<?php
-													if (empty($style[$recordsItem['style']])) {
-														echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';
-													}else{
-														echo $style[$recordsItem['style']]['name'];
-													}
-												?>
-											</td>
-											<td class="text-center"><?php echo $recordsItem['jumps'];?></td>
-											<td class="text-center"><?php echo $recordsItem['strafes'];?></td>
-											<td class="text-center"><?php echo $recordsItem['sync'];?>%</td>
-											<td class="text-center"><?php echo $recordsItem['points'];?></td>
-										</tr>
-									<?php endforeach;?>
+								<tbody class="table-tr" id="load_allrecords">
+								
 								</tbody>
 							</table>
 						</div>
@@ -131,3 +112,6 @@
 		</div>
 	</div>
 </div>
+<script>
+	load_allrecords('<?php echo $this->route['map'];?>');
+</script>

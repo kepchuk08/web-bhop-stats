@@ -47,10 +47,10 @@
 		    		<span class="text-color-ced4da"><?=VI_USER_ALLRECSTYLE?></span> 
 		    		<b>
 		    			<?php 
-			    			if (empty($sistem->style()[$this->route['style']])) {
+			    			if (empty($system->style()[$this->route['style']])) {
 			    				echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';;
 			    			}else{
-			    				echo $sistem->style()[$this->route['style']]['name'];
+			    				echo $system->style()[$this->route['style']];
 			    			}
 		    			?>
 		    		</b>
@@ -71,15 +71,22 @@
 						</thead>
 						<tbody class="table-tr">
 							<?php foreach ($allrecords as $allrecordsItem):?>
-								<tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="<?php echo $sistem->corectDate($allrecordsItem['date'])['title'] ;?>">
+								<tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="<?php echo $system->expand_date($allrecordsItem['date']) ;?>">
 									<td><a class="table-a" href="/maps/<?php echo $allrecordsItem['map'];?>"><?php echo $allrecordsItem['map'];?></a></td>
-									<td class="text-center"><?php echo $sistem->corectDate($allrecordsItem['date'])['datediff'];?></td>
-									<td class="text-center"><?php echo $sistem->secToStr(round($allrecordsItem['time']));?></td>
-									<td class="text-center"><?php echo $sistem->track($allrecordsItem['track']);?></td>
+									<td class="text-center"><?php echo $system->expand_date($allrecordsItem['date'], 5);?></td>
+									<td class="text-center"><?php echo $system->secToStr(round($allrecordsItem['time']));?></td>
+									<td class="text-center"><?php echo $system->track($allrecordsItem['track']);?></td>
 									<td class="text-center"><?php echo $allrecordsItem['jumps'];?></td>
 									<td class="text-center"><?php echo $allrecordsItem['strafes'];?></td>
 									<td class="text-center"><?php echo $allrecordsItem['sync'];?></td>
 									<td class="text-center"><?php echo $allrecordsItem['points'];?></td>	
+									<?php if (isset($_SESSION['admin'])):?>
+										<td class="text-center">
+											<button type="button" class="btn btn-danger btn-sm" onclick="delete_record(<?php echo $lastrecordsItem['id']?>)">
+												<i class="fas fa-trash-alt"></i>
+											</button>
+										</td>
+									<?php endif?>
 								</tr>
 							<?php endforeach;?>
 						</tbody>

@@ -8,7 +8,6 @@
 namespace application\models;
 
 use application\core\Model;
-use application\lib\Json;
 use application\lib\SteamAPI;
 
 class Admin extends Model
@@ -18,32 +17,32 @@ class Admin extends Model
 
 	public function loginValidate($post)
 	{
-		$json = new Json;
-		$result = $json->getJson();
-		$countAdmins = count($result['admins']);
-		for ($id = 0; $id < $countAdmins; $id++) {
-			if ($result['admins'][$id]['login'] == $post['login']) {
-				if ($result['admins'][$id]['pass'] == $post['password']) {
-					$_SESSION['admin']['type']['login'] = $post['login'];
+		$STH = $this->db->row('SELECT * FROM `web`');
+        $result = $this->db->fromBase64($STH[0]['admins']);
+
+        foreach ($result as $key => $value) {
+        	if ($value['name'] == $post['login']) {
+        		if ($value['pass'] == $post['password']) {
+        			$_SESSION['admin']['type']['login'] = $post['login'];
 					return true;
         			break;
-				}
-    		}
-		}
+        		}
+        	}
+        }
+
 		$this->error = MODEL_ADMIN_ALERT_AUTH_ERROR;
 		return false;
 	}
 
 	public function steamValidate($post)
 	{
-		$json = new Json;
+		$STH = $this->db->row('SELECT * FROM `web`');
+        $result = unserialize($STH[0]['admins']);
 
-		$result = $json->getJson();
-		$countAdmins = count($result['admins']);
-		for ($id = 0; $id < $countAdmins; $id++) {
-			if (!empty($result['admins'][$id]['steamid'])) {
-				$steam = new SteamAPI($result['admins'][$id]['steamid']);
-				if ($result['admins'][$id]['steamid'] == $post) {
+        foreach ($result as $key => $value) {
+        	if (!empty($value['auth'])) {
+				$steam = new SteamAPI($value['auth']);
+				if ($value['auth'] == $post) {
 					$_SESSION['admin']['type']['steam'] = $post;
 					return true;
 	        		break;
@@ -53,7 +52,7 @@ class Admin extends Model
 	        		break;
 				}
 			}
-		}
+        }
 	}
 
 	public function check_session($value)
@@ -69,126 +68,6 @@ class Admin extends Model
 		}
 	}
 
-	public function styleList()
-	{
-		$json = new Json;
-		$result = $json->getJson();
-
-		$resultArray = [
-			'count' => count($result['style']),
-			'arraystyle' => $result['style'],
-		];
-
-		return $resultArray;
-	}
-
-	public function editStyle($post)
-	{
-		$json_file = 'application/config/config.json';
-		$json = json_decode(file_get_contents($json_file),TRUE);
-		$countStyle = count($json['style']);
-		for ($id = 0; $id < $countStyle; $id++) {
-			if ($json['style'][$id]['id'] == $post['id-style']) {
-				$json['style'][$id]['name'] = $post['name-style'];
-				file_put_contents($json_file, json_encode($json));
-				$this->success = MODEL_ADMIN_ALERT_SUCCESS_STYLE_EDIT.$post['name-style'];
-				return true;
-		        break;
-		    }
-		}
-	}
-	
-	public function addStyle($post)
-	{
-		$json_file = 'application/config/config.json';
-		$json = json_decode(file_get_contents($json_file),TRUE);
-		$idStyle = count($json['style']);
-		$addStyle = [
-				'id' => (int)$idStyle,
-				'name' => $post['add-styleName'],	
-		];
-		array_push($json['style'], $addStyle);
-		file_put_contents($json_file, json_encode($json));
-		$this->success = MODEL_ADMIN_ALERT_SUCCESS_STYLE_ADD.$post['add-styleName'];
-
-		return true;
-	}
-
-	public function getAdmins()
-	{
-		$json = new Json;
-		$result = $json->getJson();
-
-		$resultArray = [
-			'count' => count($result['admins']),
-			'arrayadmin' => $result['admins'],
-		];
-
-		return $resultArray;
-	}
-
-	public function addAdmin($post)
-	{
-		$json_file = 'application/config/config.json';
-		$json = json_decode(file_get_contents($json_file),TRUE);
-		$adminId = count($json['admins']);
-		$addAdmin = [
-				'id' => (int)$adminId,
-				'login' => $post['addAdmin-nik'],
-				'pass' => $post['addAdmin-pass'],
-				'steamid' => $post['addAdmin-steam'],	
-		];
-		array_push($json['admins'], $addAdmin);
-		file_put_contents($json_file, json_encode($json));
-		$this->success = $post['addAdmin-nik'].MODEL_ADMIN_ADMINS_ALERT_SUCCESS_ADD;
-
-		return true;
-	}
-
-	public function editAdmin($post)
-	{
-		$json_file = 'application/config/config.json';
-		$json = json_decode(file_get_contents($json_file),TRUE);
-		$countAdmin = count($json['admins']);
-		$adminId = $post['admin-Id'];
-		for ($id = 0; $id < $countAdmin; $id++) {
-			if ($json['admins'][$id]['id'] == $post['admin-Id']) {
-				$json['admins'][$id]['login'] = $post['admin-Login'];
-				$json['admins'][$id]['pass'] = $post['admin-Pass'];
-				$json['admins'][$id]['steamid'] = $post['admin-Steam'];
-				file_put_contents($json_file, json_encode($json));
-				$this->success = MODEL_ADMIN_ADMINS_ALERT_SUCCESS_EDIT;
-				return true;
-		        break;
-		    }
-		}
-	}
-
-	public function deleteAdmin($adminId)
-	{
-		$json_file = 'application/config/config.json';
-		$json = json_decode(file_get_contents($json_file),TRUE);
-		foreach($json['admins'] as $key => $val){
-			if ($key = $adminId) {
-		    	unset($json['admins'][$key]);			
-				file_put_contents($json_file, json_encode($json));
-		    	break;
-			}    
-		}
-	}
-
-	public function getDB()
-	{
-		$json = new Json;
-		$result = $json->getJson();
-
-		$resultArray = [
-			'count' => count($result['db']),
-			'arraydb' => $result['db'],
-		];
-
-		return $resultArray;
-	}
 
 	public function DBsize()
 	{
@@ -201,6 +80,25 @@ class Admin extends Model
 	{
 		$this->db->row('DELETE FROM `playertimes`');
 		$this->success = MODEL_ADMIN_ALERT_SUCCESS_CLEAR;
+	}
+
+	public function styleList()
+	{
+		$STH = $this->db->row('SELECT * FROM `web`');
+        $result = $this->db->fromBase64($STH[0]['style']);
+
+        return $result;
+	}
+
+	public function checkKey()
+	{
+		$config = require 'application/config/config.php';
+
+		if (empty($config['steamapikey'])) {
+			return false;
+		}
+
+		return true;
 	}
 }
  ?>

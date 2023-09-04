@@ -24,8 +24,8 @@
 			      				<img src="<?php echo $steamapi['avatarfull'];?>" class="rounded mx-auto d-block">
 			      			</div>
 			      			<div class="col-12 user-info">
-			      				<?php echo $sistem->userStatus($steamapi['personastate']);?>
-			      				<?php echo $sistem->VacBanInfo($vac);?>
+			      				<?php echo $system->userStatus($steamapi['personastate']);?>
+			      				<?php echo $system->VacBanInfo($vac);?>
 			      				<p><a class="text-color-green" href="<?php echo $steamapi['profileurl'];?>" target="_blank"><i class="fab fa-steam"></i><?=VI_USER_INDEX_PROFILE?></a></p>
 			      			</div>
 			      		</div>
@@ -114,7 +114,7 @@
 													    		if (empty($style[$styleItem['style']])) {
 													    			echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';
 													    		}else{
-													    			echo $style[$styleItem['style']]['name'];
+													    			echo $style[$styleItem['style']];
 													    		}
 							      							?>
 							      						</div>
@@ -145,7 +145,7 @@
 									        <?php foreach ($lastrecords as $lastrecordsItem):?>
 										        <tr>
 												    <td><?php echo $lastrecordsItem['map'];?></td>
-												    <td><?php echo $sistem->secToStr(round($lastrecordsItem['time']));?></td>
+												    <td><?php echo $system->secToStr(round($lastrecordsItem['time']));?></td>
 												    <td><?php echo $lastrecordsItem['points'];?></td>
 										        </tr>
 									        <?php endforeach;?>

@@ -10,8 +10,7 @@ namespace application\controllers;
 use application\core\Controller;
 use application\models\Main;
 use application\lib\SteamAPI;
-use application\lib\Sistem;
-use application\lib\Json;
+use application\lib\System;
 
 class UserController extends Controller
 {
@@ -19,22 +18,19 @@ class UserController extends Controller
 	{
 
 		$mainModel = new Main;
-		$json = new Json;
-		$sistem = new Sistem;
-
-		$result = $json->getJson();
+		$system = new System;
 
 		$vars = [
 			'data' => $this->model->getUser($this->route['auth']),
 			'statisticServer' => $mainModel->statisticServer(),
 			'userstatsmaps' => $this->model->statisticMaps($this->route['auth']),
 			'styleRecord' => $this->model->styleRecord($this->route['auth']),
-			'style' => $sistem->style(),
+			'style' => $system->style(),
 			'lastrecords' => $this->model->lastRecords($this->route['auth']),
-			'sistem' => $sistem,
+			'system' => $system,
 		];
 
-		if (empty($result['oldcss'])) {
+		if ($system->statusv34() == 0) {
 			$SteamAPI = new SteamAPI($this->route['auth']);
 			$vars['steamapi'] = $SteamAPI->GetPlayerInfo();
 			$vars['vac'] = $SteamAPI->VacBan();
@@ -54,19 +50,16 @@ class UserController extends Controller
 	public function allrecordsAction()
 	{
 		$mainModel = new Main;
-		$json = new Json;
-		$sistem = new Sistem;
-
-		$result = $json->getJson();
+		$system = new System;
 
 		$vars = [
 			'nosteam' => $this->model->nosteam($this->route['auth']),
 			'allrecords' => $this->model->allRecords($this->route['auth']),
 			'statisticServer' => $mainModel->statisticServer(),
-			'sistem' => $sistem,
+			'system' => $system,
 		];
 
-		if (empty($result['oldcss'])) {
+		if ($system->statusv34() == 0) {
 			$SteamAPI = new SteamAPI($this->route['auth']);
 			$vars['steamapi'] = $SteamAPI->GetPlayerInfo();
 			$vars['vac'] = $SteamAPI->VacBan();
@@ -85,25 +78,24 @@ class UserController extends Controller
 	public function allstyleAction()
 	{
 		$mainModel = new Main;
-		$json = new Json;
-		$sistem = new Sistem;
-
-		$result = $json->getJson();
+		$system = new System;
 
 		$vars = [
 			'nosteam' => $this->model->nosteam($this->route['auth']),
 			'allrecords' => $this->model->allRecords($this->route['auth']),
 			'statisticServer' => $mainModel->statisticServer(),
-			'sistem' => $sistem,
+			'system' => $system,
 		];
 
-		if (empty($sistem->style()[$this->route['style']])) {
+		$style = $system->style();
+
+		if (empty($style[$this->route['style']])) {
 			$title = 'error style';
 		}else{
-			$title = $sistem->style()[$this->route['style']]['name'];
+			$title = $style[$this->route['style']];
 		}
 
-		if (empty($result['oldcss'])) {
+		if ($system->statusv34() == 0) {
 			$SteamAPI = new SteamAPI($this->route['auth']);
 			$vars['steamapi'] = $SteamAPI->GetPlayerInfo();
 			$vars['vac'] = $SteamAPI->VacBan();

@@ -132,10 +132,6 @@ define('MODEL_ADMIN_ALERT_SUCCESS_STYLE_ADD', 'Ein neuer Style wurde hinzugefüg
 /*Datenbankanpassungen*/
 define('VI_ADMIN_DB_TITLE_PAGE', 'Datenbanken');
 define('VI_ADMIN_DB_MENU_TIMER', 'Timer Datenbank');
-define('VI_ADMIN_DB_FORM_HOST', 'Host');
-define('VI_ADMIN_DB_FORM_NAME', 'Datenbank Name');
-define('VI_ADMIN_DB_FORM_USER', 'Benutzer');
-define('VI_ADMIN_DB_FORM_PASS', 'Passwort');
 define('VI_ADMIN_DB_FORM_SIZE', 'Datenbankgröße');
 define('VI_ADMIN_DB_FORM_SYBMIT_CLEAR', 'Rekorde löschen');
 define('ALERT_ADMIN_DB_TITLE', 'Rekorde löschen');
@@ -182,21 +178,24 @@ define('VI_INSTALL_SUCCESS_SYBMIT_SITE', 'Gehe zur Website');
 define('VI_INSTALL_SUCCESS_SYBMIT_ADMIN_PANEL', 'Admin-Panel');
 
 /*System Datei*/
-define('LIB_SISTEM_A_SECOND_AGO', ' Sekunde zuvor');
-define('LIB_SISTEM_SECONDS_AGO', ' Sekunden zuvor');
-define('LIB_SISTEM_A_SECONDS_AGO', ' Sekunde zuvor');
+define('LIB_SISTEM_TIME_JUST', ' Gerade jetzt');
+define('LIB_SISTEM_TIME_SEC_BACK', ' s. zurück');
+define('LIB_SISTEM_TIME_MIN_AGO', ' vor min.');
+define('LIB_SISTEM_TIME_HPUR_AGO', ' stunde. zurück');
+define('LIB_SISTEM_TIME_YESTARDAY', 'Gestern in ');
 
-define('LIB_SISTEM_A_MINUTE_AGO', ' Minute zuvor');
-define('LIB_SISTEM_MINUTES_AGO', ' Minuten zuvor');
-define('LIB_SISTEM_A_MINUTES_AGO', ' Minute zuvor');
-
-define('LIB_SISTEM_AN_HOUR_AGO', ' Stunde zuvor');
-define('LIB_SISTEM_HOURS_AGO', ' Stunden zuvor');
-define('LIB_SISTEM_AN_HOURS_AGO', ' Stunden zuvor');
-
-define('LIB_SISTEM_A_DAY_AGO', ' Tag zuvor');
-define('LIB_SISTEM_DAYS_AGO', ' Tage zuvor');
-define('LIB_SISTEM_A_DAYS_AGO', ' Tage zuvor');
+define('LIB_SISTEM_TIME_JANUARY', 'Januars');
+define('LIB_SISTEM_TIME_FEBRUARY', 'Februar');
+define('LIB_SISTEM_TIME_APRIL', 'Maerz');
+define('LIB_SISTEM_TIME_MARCH', 'April');
+define('LIB_SISTEM_TIME_MAY', 'Mai');
+define('LIB_SISTEM_TIME_JUNE', 'Juni');
+define('LIB_SISTEM_TIME_JULY', 'Juli');
+define('LIB_SISTEM_TIME_AUGUST', 'August');
+define('LIB_SISTEM_TIME_SEPTEMBER', 'September');
+define('LIB_SISTEM_TIME_OCTOBER', 'Oktober');
+define('LIB_SISTEM_TIME_NEVEMBER', 'November');
+define('LIB_SISTEM_TIME_DECEMBER', 'Dezember');
 
 define('LIB_SISTEM_SECOND', ' sek.  ');
 define('LIB_SISTEM_MINUTE', ' min.  ');

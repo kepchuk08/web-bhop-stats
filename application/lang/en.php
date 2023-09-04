@@ -6,11 +6,11 @@
  * @translation freak_exe_uLow
  */
 
-/*используется на разных страницах*/
+/*used on different pages*/
 define('LASTRECORDS', 'Last Records');
 define('ERROR_STYLE_TITLE','This style is not in your configuration');
 
-/*шапка сайта*/
+/*site header*/
 define('DEF_MENU_MAPS', 'Maps');
 define('INFO_HED_ALL_RECORDS', 'All records');
 define('INFO_HED_REC_BASE', 'Main records');
@@ -21,7 +21,7 @@ define('HED_SEARCH_placeholder', 'Search for a player');
 define('HED_SEARCH_submit', 'Search');
 define('HED_LANG_SELECT', 'Language');
 
-/*название страниц*/
+/*page names*/
 define('TITLE_PAGE_HAME', 'Main Page');
 define('TITLE_PAGE_SEARCH_PLAYERS', 'Search for players');
 define('TITLE_PAGE_PLAYER', 'Player');
@@ -31,17 +31,17 @@ define('TITLE_PAGE_MAPS', 'All Maps');
 define('TITLE_PAGE_MAP', 'Map ');
 define('TITLE_PAGE_MAP_ALLRECORDS', 'All records on the map ');
 
-/*главная*/
+/*main*/
 define('VI_MAIN_INDEX_TOP_PLAYER', 'Top players');
 
-/*последние рекорды*/
+/*recent records*/
 define('VI_MAIN_LASTRECORDS_LAST_PLAYER', 'The last 100 records');
 
-/*поиск игроков*/
+/*search for players*/
 define('VI_MAIN_SEARCH_RESULT_TRUE', 'Search by request: ');
 define('VI_MAIN_SEARCH_RESULT_FALSE', 'Player not found');
 
-/*страница игрока*/
+/*player's page*/
 define('VI_USER_INDEX_NOSTEAM_TEXT', 'The player plays with a pirated version of the game');
 define('VI_USER_INDEX_PROFILE', 'Profile');
 define('VI_USER_INDEX_THERE_IS_NO_RECORD', 'The player did not set any records');
@@ -57,7 +57,7 @@ define('VI_USER_ALLRECSTYLE', 'All Style records');
 define('VI_USER_STEAMAPI_ERROR_TITLE', 'Error SteamAPI!');
 define('VI_USER_STEAMAPI_ERROR_CONTENT', 'Error reading the Steam API key, make sure that the steam api key is entered correctly!!!');
 
-/*страница карт*/
+/*maps page*/
 define('VI_MAP_TITLE', 'All server Maps');
 define('VI_MAP_INFO_TITLE', 'Info');
 define('VI_MAP_ALLREC', 'Records');
@@ -73,11 +73,11 @@ define('VI_MAP_TOP_REC', 'Top Records');
 define('VI_MAP_MAPINFO_NO_REC_BONUS', 'There is no bonus record');
 define('MODEL_MAP_ERROR_SEARCH', 'There are no records for this style');
 
-/*страница 404*/
+/*page 404*/
 define('VI_404_TITLE', 'Page not found!');
 define('VI_404_SUBMIT_BACK', 'Back to the main page');
 
-/*таблицы*/
+/*tables*/
 define('VI_TABLE_NAME', 'Player');
 define('VI_TABLE_COUNTRY', 'Country');
 define('VI_TABLE_LAST_VISIT', 'Last visit');
@@ -95,14 +95,14 @@ define('VI_TABLE_NUMBER_OF_RECORDS', 'Number of records');
 define('VI_TABLE_POPULAR_STYLE', 'Popular Styles');
 define('VI_MAIN_INDEX_MORE_DETAILED', 'Read more');
 
-/*админка*/
-/*название страниц*/
+/*admin panel*/
+/*page names*/
 define('TITLE_PAGE_ADMIN_AUTH', 'Admin panel login');
 define('TITLE_PAGE_ADMIN_STYLE', 'Style settings');
 define('TITLE_PAGE_ADMIN_DB', 'Database Setup');
 define('TITLE_PAGE_ADMIN_ADMINS', 'Administrators configuration');
 
-/*авторизация*/
+/*authorization*/
 define('VI_ADMIN_LOGO_TEXT_AUTH', 'Admin panel');
 define('VI_ADMIN_FORM_LOGIN', 'Login');
 define('VI_ADMIN_FORM_PASS', 'Password');
@@ -112,7 +112,7 @@ define('VI_ADMIN_ALERT_AUTH_TITLE', 'Login error!');
 define('VI_ADMIN_ALERT_AUTH_TEXT', 'You are not an administrator!');
 define('MODEL_ADMIN_ALERT_AUTH_ERROR', 'Login or password is incorrect');
 
-/*меню и хедер*/
+/*menu and header*/
 define('VI_ADMIN_HED_INDEX_LOGO_TEXT', 'Admin panel');
 define('VI_ADMIN_HED_INDEX_MENU_BACK_SAIT', 'Go to the main page');
 define('VI_ADMIN_HED_INDEX_MENU_LOGOUT', 'Logout');
@@ -120,7 +120,7 @@ define('VI_ADMIN_HED_INDEX_MENU_STYLE', 'Style');
 define('VI_ADMIN_HED_INDEX_MENU_DB', 'Database');
 define('VI_ADMIN_HED_INDEX_MENU_ADMINS', 'Administrators');
 
-/*настройка стилей*/
+/*customizing styles*/
 define('VI_ADMIN_INDEX_TITLE_PAGE', 'Styles');
 define('VI_ADMIN_INDEX_TABLE_NAME', 'Name');
 define('VI_ADMIN_INDEX_SUBMIT_EDIT', 'Edit');
@@ -129,13 +129,9 @@ define('VI_ADMIN_INDEX_SUBMIT_CLOUS', 'Close');
 define('MODEL_ADMIN_ALERT_SUCCESS_STYLE_EDIT', 'The name of the style has been changed to ');
 define('MODEL_ADMIN_ALERT_SUCCESS_STYLE_ADD', 'A new style has been added ');
 
-/*нстройка баз данных*/
+/*configuring databases*/
 define('VI_ADMIN_DB_TITLE_PAGE', 'Databases');
 define('VI_ADMIN_DB_MENU_TIMER', 'Timer database');
-define('VI_ADMIN_DB_FORM_HOST', 'Host');
-define('VI_ADMIN_DB_FORM_NAME', 'Database name');
-define('VI_ADMIN_DB_FORM_USER', 'User');
-define('VI_ADMIN_DB_FORM_PASS', 'Password');
 define('VI_ADMIN_DB_FORM_SIZE', 'Database size');
 define('VI_ADMIN_DB_FORM_SYBMIT_CLEAR', 'Clear the records');
 define('ALERT_ADMIN_DB_TITLE', 'Clear the records');
@@ -144,7 +140,7 @@ define('ALERT_ADMIN_DB_CANCEL', 'Cancel');
 define('ALERT_ADMIN_DB_YES_CLEAR', 'Yes, clear the db tables');
 define('MODEL_ADMIN_ALERT_SUCCESS_CLEAR', 'All records are deleted!');
 
-/*настройка администраторов*/
+/*installation*/
 define('VI_ADMIN_ADMINS_TITLE_PAGE', 'Administrators');
 define('VI_ADMIN_ADMINS_MENU_ADD_ADMIN', 'Add a Admin');
 define('VI_ADMIN_ADMINS_FORM_LOGIN', 'Username');
@@ -181,26 +177,30 @@ define('VI_INSTALL_SUCCESS_CONTENT', 'Now you can use BhopStats, you can also go
 define('VI_INSTALL_SUCCESS_SYBMIT_SITE', 'Go to the website');
 define('VI_INSTALL_SUCCESS_SYBMIT_ADMIN_PANEL', 'Admin panel');
 
-/*ситемный файл*/
-define('LIB_SISTEM_A_SECOND_AGO', ' second ago');
-define('LIB_SISTEM_SECONDS_AGO', ' seconds ago');
-define('LIB_SISTEM_A_SECONDS_AGO', ' second ago');
+/*system file*/
 
-define('LIB_SISTEM_A_MINUTE_AGO', ' minute ago');
-define('LIB_SISTEM_MINUTES_AGO', ' minutes ago');
-define('LIB_SISTEM_A_MINUTES_AGO', ' minutes ago');
+define('LIB_SISTEM_TIME_JUST', ' Just');
+define('LIB_SISTEM_TIME_SEC_BACK', ' sec. back');
+define('LIB_SISTEM_TIME_MIN_AGO', ' min. back');
+define('LIB_SISTEM_TIME_HPUR_AGO', ' an hour ago');
+define('LIB_SISTEM_TIME_YESTARDAY', 'Yesterday at ');
 
-define('LIB_SISTEM_AN_HOUR_AGO', ' hour ago');
-define('LIB_SISTEM_HOURS_AGO', ' hours ago');
-define('LIB_SISTEM_AN_HOURS_AGO', ' hours ago');
-
-define('LIB_SISTEM_A_DAY_AGO', ' day ago');
-define('LIB_SISTEM_DAYS_AGO', ' days ago');
-define('LIB_SISTEM_A_DAYS_AGO', ' days ago');
+define('LIB_SISTEM_TIME_JANUARY', 'january');
+define('LIB_SISTEM_TIME_FEBRUARY', 'february');
+define('LIB_SISTEM_TIME_APRIL', 'martha');
+define('LIB_SISTEM_TIME_MARCH', 'april');
+define('LIB_SISTEM_TIME_MAY', 'may');
+define('LIB_SISTEM_TIME_JUNE', "june's");
+define('LIB_SISTEM_TIME_JULY', "july's");
+define('LIB_SISTEM_TIME_AUGUST', 'august');
+define('LIB_SISTEM_TIME_SEPTEMBER', 'september');
+define('LIB_SISTEM_TIME_OCTOBER', "october's");
+define('LIB_SISTEM_TIME_NEVEMBER', "november's");
+define('LIB_SISTEM_TIME_DECEMBER', 'december');
 
 define('LIB_SISTEM_SECOND', ' sec.  ');
 define('LIB_SISTEM_MINUTE', ' min.  ');
-define('LIB_SISTEM_HOURS', ' hr.  ');
+define('LIB_SISTEM_HOURS', ' hour.  ');
 
 define('LIB_SISTEM_TRACK_BASE', 'Main');
 define('LIB_SISTEM_TRACK_BONUS', 'Bonus');
@@ -213,4 +213,5 @@ define('LIB_SISTEM_STATUS_VAC_NO', 'There is no VAC ban');
 define('LIB_SISTEM_STATUS_VAC_YES', 'The player has a VAC ban');
 
 define('LIB_SISTEM_THERE_ARE_NO_RECORDS', 'The player did not pass any cards');
+
 ?>

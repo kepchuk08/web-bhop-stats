@@ -67,15 +67,15 @@
 				      											if (empty($style[$stylerecordItem['style']])) {
 												    				echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';
 												    			}else{
-												    				echo $style[$stylerecordItem['style']]['name'];
+												    				echo $style[$stylerecordItem['style']];
 												    			}
 				      											?> 
 				      											<span><?php echo $stylerecordItem['count_style'];?></span>
 				      										</div>
 				      										<div class="col-12 block-info-value">
 				      											<?php 
-				      											echo $sistem->userName($sistem->toprecbase($mapname, $stylerecordItem['style'])['auth']);
-				      											echo '<br>'.$sistem->secToStr(round($sistem->toprecbase($mapname, $stylerecordItem['style'])['time']));
+				      											echo $system->userName($system->toprecbase($mapname, $stylerecordItem['style'])['auth']);
+				      											echo '<br>'.$system->secToStr(round($system->toprecbase($mapname, $stylerecordItem['style'])['time']));
 				      											?>
 				      										</div>
 				      									</div>
@@ -98,14 +98,14 @@
 				      											if (empty($style[$stylemapbonusItem['style']])) {
 												    				echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';
 												    			}else{
-												    				echo $style[$stylemapbonusItem['style']]['name'];
+												    				echo $style[$stylemapbonusItem['style']];
 												    			}
 				      											?>
 				      										</div>
 				      										<div class="col-12 block-info-value">
 				      											<?php 
-				      											echo $sistem->userName($sistem->toprecbonus($mapname, $stylemapbonusItem['style'])['auth']);
-				      											echo '<br>'.$sistem->secToStr(round($sistem->toprecbonus($mapname, $stylemapbonusItem['style'])['time']));
+				      											echo $system->userName($system->toprecbonus($mapname, $stylemapbonusItem['style'])['auth']);
+				      											echo '<br>'.$system->secToStr(round($system->toprecbonus($mapname, $stylemapbonusItem['style'])['time']));
 				      											?>
 				      										</div>
 				      									</div>
@@ -134,14 +134,14 @@
 										            <tbody class="table-tr">
 										            	<?php foreach ($lastRecordsMap as $lastRecordsMapItem):?>
 											              	<tr>
-													            <td><?php echo $sistem->userName($lastRecordsMapItem['auth']);?></td>
-													            <td class="text-center"><?php echo $sistem->secToStr(round($lastRecordsMapItem['time']));?></td>
+													            <td><?php echo $system->userName($lastRecordsMapItem['auth']);?></td>
+													            <td class="text-center"><?php echo $system->secToStr(round($lastRecordsMapItem['time']));?></td>
 													            <td class="text-center">
 													            	<?php
 																		if (empty($style[$lastRecordsMapItem['style']])) {
 														    				echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';
 														    			}else{
-														    				echo $style[$lastRecordsMapItem['style']]['name'];
+														    				echo $style[$lastRecordsMapItem['style']];
 														    			}
 													            	?>
 													            </td>
@@ -149,6 +149,13 @@
 													            <td class="text-center"><?php echo $lastRecordsMapItem['strafes'];?></td>
 													            <td class="text-center"><?php echo $lastRecordsMapItem['sync'];?>%</td>
 													            <td class="text-center"><?php echo $lastRecordsMapItem['points'];?></td>
+													            <?php if (isset($_SESSION['admin'])):?>
+																	<td class="text-center">
+																		<button type="button" class="btn btn-danger btn-sm" onclick="delete_record(<?php echo $lastrecordsItem['id']?>)">
+																			<i class="fas fa-trash-alt"></i>
+																		</button>
+																	</td>
+																<?php endif?>
 											              	</tr>
 										              	<?php endforeach;?>
 										            </tbody>

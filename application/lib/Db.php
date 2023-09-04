@@ -7,7 +7,6 @@
 
 namespace application\lib;
 use PDO;
-use application\lib\Json;
 
 class Db
 {
@@ -16,9 +15,9 @@ class Db
 
 	public function __construct()
 	{
-		$json = new Json;
-		$result = $json->getJson();
-		$this->db = new PDO('mysql:host='.$result['db'][0]['host'].';dbname='.$result['db'][0]['dbname'].'', $result['db'][0]['user'], $result['db'][0]['password']);
+		$result = require 'application/config/config.php';
+		$this->db = new PDO('mysql:host='.$result['host'].';dbname='.$result['dbname'].'', $result['user'], $result['password']);
+
 	}
 
 	public function query($sql, $params = [])
@@ -57,5 +56,25 @@ class Db
 		$result = $this->query($sql, $params);
 		
 		return $result->fetchColumn();
+	}
+
+	/**
+	 * Кодируем в base64
+	 */
+	public function inBase64($value){
+
+		$result = base64_encode(serialize($value)); 
+
+		return $result;
+	}
+
+	/**
+	 * Декодим из base64
+	 */
+	public function fromBase64($value){
+
+		$result = unserialize(base64_decode($value));
+
+		return $result;
 	}
 }

@@ -11,20 +11,20 @@ use application\core\Controller;
 use application\models\Main;
 use application\models\User;
 use application\models\Admin;
-use application\lib\Sistem;
+use application\lib\System;
 
 class MapsController extends Controller
 {
 	public function indexAction()
 	{
 		$mainModel = new Main;
-		$sistem = new Sistem;
+		$system = new System;
 
 		$vars = [
 			'statisticServer' => $mainModel->statisticServer(),
 			'maps' => $this->model->getMaps(),
-			'sistem' => $sistem,
-			'style' => $sistem->style(),
+			'system' => $system,
+			'style' => $system->style(),
 		];
 
 		$this->view->render(TITLE_PAGE_MAPS,$vars);
@@ -34,7 +34,7 @@ class MapsController extends Controller
 	{
 		$mainModel = new Main;
 		$userModel = new User;
-		$sistem = new Sistem;
+		$system = new System;
 
 		$vars = [
 			'mapname' => $this->route['map'],
@@ -42,8 +42,8 @@ class MapsController extends Controller
 			'mapinfo' => $this->model->mapinfo($this->route['map']),
 			'stylemapbase' => $this->model->stylemapbase($this->route['map']),
 			'stylemapbonus' => $this->model->stylemapbonus($this->route['map']),
-			'style' => $sistem->style(),
-			'sistem' => $sistem,
+			'style' => $system->style(),
+			'system' => $system,
 			'lastRecordsMap' => $this->model->lastRecordsMap($this->route['map']),
 		];
 
@@ -55,7 +55,7 @@ class MapsController extends Controller
 		$mainModel = new Main;
 		$userModel = new User;
 		$adminModel = new Admin;
-		$sistem = new Sistem;
+		$system = new System;
 
 		$map = $this->route['map'];
 
@@ -63,8 +63,8 @@ class MapsController extends Controller
 			'mapname' => $this->route['map'],
 			'statisticServer' => $mainModel->statisticServer(),
 			'mapinfo' => $this->model->mapinfo($this->route['map']),
-			'style' => $sistem->style(),
-			'sistem' => $sistem,
+			'style' => $system->style(),
+			'system' => $system,
 			'flstyle' => $adminModel->styleList(),
 		];
 

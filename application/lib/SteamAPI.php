@@ -3,7 +3,6 @@
 namespace application\lib;
 use Exception;
 use Math_BigInteger;
-use application\lib\Json;
 
 
 /**
@@ -88,9 +87,6 @@ class SteamAPI {
 	 * @throws Exception If the input format was not recognized as a SteamID
 	 */
 	public function __construct($id = null) {
-		$json = new Json;
-		$result = $json->getJson();
-		$this->json = $result;
 
 		if (!$id) {
 			$this->universe = self::UNIVERSE_INVALID;
@@ -299,7 +295,8 @@ class SteamAPI {
 
 	public function ConvertVanityURL($url)
 	{
-	  	$url = "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=".$this->json['steamapikey']."&vanityurl=".$url."&format=json";
+		$result = require 'application/config/config.php';
+	  	$url = "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=".$result['steamapikey']."&vanityurl=".$url."&format=json";
 	  	$data = file_get_contents($url);
 	  	$information = json_decode($data, true);
 
@@ -309,8 +306,9 @@ class SteamAPI {
 
 	public function GetPlayerInfo()
 	{
+		$result = require 'application/config/config.php';
 		$key_account = self::getSteamID64();
-	  	$url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$this->json['steamapikey']."&steamids=".$key_account."&format=json";
+	  	$url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$result['steamapikey']."&steamids=".$key_account."&format=json";
 
 	  	$data = file_get_contents($url);
 	  	$information = json_decode($data, true);
@@ -323,8 +321,9 @@ class SteamAPI {
 	}
 
 	public function VacBan() {
+		$result = require 'application/config/config.php';
 		$key_account = self::getSteamID64();
-	  	$url = "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=".$this->json['steamapikey']."&steamids=".$key_account."&format=json";
+	  	$url = "http://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=".$result['steamapikey']."&steamids=".$key_account."&format=json";
 	  	$data = file_get_contents($url);
 	  	$information = json_decode($data, true);
 	  	if (empty($information['response']['players'][0])) {

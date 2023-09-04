@@ -23,6 +23,7 @@
     <script src="/public/js/main.js"></script>
     <script src="/public/js/sortTable.js"></script>
     <script src="/public/js/form.js"></script>
+    <script src="/public/js/ajax.js"></script>
     <script src="/public/js/popper.js"></script>
 
     
@@ -104,7 +105,7 @@
                 <img src="/public/img/logo.svg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy">
             </div>
             <div class="col-12 col-lg-6 footer-logo2">
-                <span><a href="https://github.com/kepchuk08/web-bhop-stats">Bhop Stats</a> <i>v1.3.0</i> Developed by <a href="https://steamcommunity.com/id/kepchuk/">kepchuk</a> © <?php echo date('Y');?></span>
+                <span><a href="https://github.com/kepchuk08/web-bhop-stats">Bhop Stats</a> <i>v1.4.0</i> Developed by <a href="https://steamcommunity.com/id/kepchuk/">kepchuk</a> © <?php echo date('Y');?></span>
             </div>
         </div>
     </div>

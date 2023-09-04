@@ -8,7 +8,6 @@
 namespace application\core;
 use application\lib\SxGeo;
 
-
 class Lang {
 
 	public $lang;
@@ -17,7 +16,7 @@ class Lang {
 		$SxGeo = new SxGeo('application/lib/SxGeo.dat', SXGEO_BATCH | SXGEO_MEMORY); 
 		$country = mb_strtolower($SxGeo->getCountry($_SERVER['REMOTE_ADDR']));
 
-        if (!file_exists('application/config/config.json')) {
+        if (!file_exists('application/config/config.php')) {
         	if ($country != 'ru') {
 				$this->lang = 'en';
 			}else{
@@ -25,11 +24,9 @@ class Lang {
 			}
 
 		}else{
-			$json_file = 'application/config/config.json';
-			$json = json_decode(file_get_contents($json_file),TRUE);
-
+			$config = require 'application/config/config.php';
 			if (!isset($_COOKIE['lang'])) {
-				$this->lang = $json['language'];
+				$this->lang = $config['language'];
 			}else{
 				$this->lang = $_COOKIE['lang'];
 			}

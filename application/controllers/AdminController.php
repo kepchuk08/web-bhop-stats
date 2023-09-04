@@ -8,7 +8,6 @@
 namespace application\controllers;
 
 use application\core\Controller;
-use application\lib\Json;
 use application\lib\Sistem;
 use application\lib\LightOpenID;
 
@@ -25,8 +24,7 @@ class AdminController extends Controller
 	{
 		if (isset($this->route)){ 
 			try {
-				$json = new Json;
-				$result = $json->getJson();
+				$result = require 'application/config/config.php';
 				$openid = new LightOpenID($result['domainname']);
 				
 				if(!$openid->mode) {
@@ -62,13 +60,16 @@ class AdminController extends Controller
 			$this->view->location('admin');
 		}
 
-		$this->view->render(TITLE_PAGE_ADMIN_AUTH);
+		$vars = [
+			'check' => $this->model->checkKey(),
+		];
+
+		$this->view->render(TITLE_PAGE_ADMIN_AUTH, $vars);
 	}
 
 	public function logoutAction() 
 	{
-		unset($_SESSION['admin']['type']['login']);
-		unset($_SESSION['admin']['type']['steam']);
+		unset($_SESSION['admin']);
 
 		$this->view->redirect('admin/login');
 	}
@@ -93,12 +94,8 @@ class AdminController extends Controller
 				$this->view->message('success', $this->model->success);
 			}
 		}	
-		
-		$vars = [
-			'style' => $this->model->styleList(),
-		];
 
-		$this->view->render(TITLE_PAGE_ADMIN_STYLE, $vars);
+		$this->view->render(TITLE_PAGE_ADMIN_STYLE);
 	}
 
 	public function databaseAction() 
@@ -113,7 +110,6 @@ class AdminController extends Controller
 		}
 
 		$vars = [
-			'db' => $this->model->getDB(),
 			'size' => $this->model->DBsize(),
 		];
 		
@@ -140,12 +136,8 @@ class AdminController extends Controller
 				$this->view->message('success', $this->model->success);
 			}
 		}
-
-		$vars = [
-			'admins' => $this->model->getAdmins(),
-		];
 		
-		$this->view->render(TITLE_PAGE_ADMIN_ADMINS, $vars);
+		$this->view->render(TITLE_PAGE_ADMIN_ADMINS);
 	}
 
 	public function deleteAction() 

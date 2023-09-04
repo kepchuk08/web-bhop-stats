@@ -6,6 +6,7 @@
  */
 
 namespace application\models;
+use application\core\Model;
 
 use PDO;
 
@@ -16,12 +17,7 @@ class Install
 
     public function installForm($post)
     {
-        if (!file_exists('application/config/config.json')){
-            $fIn = fopen('application/config/config.json', 'w+');
-        }
-
-        $json_file = 'application/config/config.json';
-        $json = json_decode(file_get_contents($json_file),TRUE);
+        
 
         if ((isset($_SERVER['REQUEST_SCHEME']) AND $_SERVER['REQUEST_SCHEME'] === 'https') OR (isset($_SERVER['HTTPS']) AND $_SERVER['HTTPS'] === 'on')){
             $protocol = 'https';
@@ -39,47 +35,61 @@ class Install
             $cssold = 1;
         }
 
-        try {
-            $dbh = new PDO('mysql:host='.$post['host'].';dbname='.$post['bd-name'], $post['bd-user'], $post['bd-password']);
-            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $jsonFile = [
-                'db' => [
-                    ['id' => 1,
-                    'host' => $post['host'],
-                    'dbname' => $post['bd-name'],
-                    'user' => $post['bd-user'],
-                    'password' => $post['bd-password']]
-                ],
-                'oldcss' => $cssold,
-                'language' => $post['getlanguage'],
-                'steamapikey' => $steamapikey,
-                'domainname' => $url,
-                'logoutpage' => $url,
-                'loginpage' => $url,
-                'style' => [
-                    ["id" => 0,"name" => "Normal"],
-                    ["id" => 1,"name" => "Sideways"],
-                    ["id" => 2,"name" => "W-Only"],
-                    ["id" => 3,"name" => "Scroll"],
-                    ["id" => 4,"name" => "400 Velocity"],
-                    ["id" => 5,"name" => "Half-Sideways"],
-                    ["id" => 6,"name" => "D-Only"],
-                    ["id" => 7,"name" => "Segmented"],
-                    ["id" => 8,"name" => "Low Gravity"],
-                    ["id" => 9,"name" => "Slow Motion"]
-                ],
-                'admins' => [
-                    ["id" => 0,
-                    "login" => $post['admin-login'],
-                    "pass" => $post['admin-password'],
-                    "steamid" => $post['admin-steamid']]
-                ]
-            ];
-            file_put_contents($json_file, json_encode($jsonFile));
-            return true;
-        } catch (\Throwable $e) {
+
+        if (!$dbh = new PDO('mysql:host='.$post['host'].';dbname='.$post['bd-name'], $post['bd-user'], $post['bd-password'])) {
             $this->error = ALERT_INSTALL_ERROR_CONNECTION_BD;
             return false;
+        }else{
+            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+             $File = '<?php
+    /**
+     * @author kepchuk <support@game-lab.su>
+     * @link https://steamcommunity.com/id/kepchuk/
+     */
+    
+    return [
+        "host" => "'.$post["host"].'",
+        "dbname" => "'.$post["bd-name"].'",
+        "user" => "'.$post["bd-user"].'",
+        "password" => "'.$post["bd-password"].'",
+        "oldcss" => '.$cssold.',
+        "language" => "'.$post["getlanguage"].'",
+        "steamapikey" => "'.$steamapikey.'",
+        "domainname" => "'.$url.'",
+        "logoutpage" => "'.$url.'",
+        "loginpage" => "'.$url.'"
+    ];
+?>
+';
+
+            $dbh->exec("CREATE TABLE `web` (`id` int UNSIGNED AUTO_INCREMENT PRIMARY KEY, `style` text, `admins` text)");
+
+            $admin[1] = [
+                'name' => $post['admin-login'],
+                'pass' => $post['admin-password'],
+                'auth' => $post['admin-steamid']
+            ];
+
+            $params = [
+                'admin' => base64_encode(serialize($admin))
+            ];
+
+            $STH = $dbh->prepare('INSERT INTO `web` (`admins`) VALUES (:admin)');
+            $STH->execute(['admin' => base64_encode(serialize($admin))]);
+
+            if (!file_exists('application/config/config.php')){
+                $fIn = fopen('application/config/config.php', 'w+');
+            }
+            fwrite($fIn, $File);
+            fclose($fIn);
+            return true;
         }
+
+
+
+
+
+
+
     }
 }

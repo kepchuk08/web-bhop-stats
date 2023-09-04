@@ -3,6 +3,7 @@
 /**
  * @author kepchuk <support@game-lab.su>
  * @link https://steamcommunity.com/id/kepchuk/
+ * 
  */
 
 /*используется на разных страницах*/
@@ -131,10 +132,6 @@ define('MODEL_ADMIN_ALERT_SUCCESS_STYLE_ADD', 'Добавлен новый ст�
 /*нстройка баз данных*/
 define('VI_ADMIN_DB_TITLE_PAGE', 'Базы данных');
 define('VI_ADMIN_DB_MENU_TIMER', 'БД Таймера');
-define('VI_ADMIN_DB_FORM_HOST', 'Хост');
-define('VI_ADMIN_DB_FORM_NAME', 'Нахвание базы данных');
-define('VI_ADMIN_DB_FORM_USER', 'Пользователь');
-define('VI_ADMIN_DB_FORM_PASS', 'Пароль');
 define('VI_ADMIN_DB_FORM_SIZE', 'Размер базы данных');
 define('VI_ADMIN_DB_FORM_SYBMIT_CLEAR', 'Очистить рекорды');
 define('ALERT_ADMIN_DB_TITLE', 'Очистить рекорды');
@@ -181,21 +178,24 @@ define('VI_INSTALL_SUCCESS_SYBMIT_SITE', 'Перейти на сайт');
 define('VI_INSTALL_SUCCESS_SYBMIT_ADMIN_PANEL', 'Админ панель');
 
 /*ситемный файл*/
-define('LIB_SISTEM_A_SECOND_AGO', ' секунду назад');
-define('LIB_SISTEM_SECONDS_AGO', ' секунды назад');
-define('LIB_SISTEM_A_SECONDS_AGO', ' секунд назад');
+define('LIB_SISTEM_TIME_JUST', ' Только что');
+define('LIB_SISTEM_TIME_SEC_BACK', ' сек. назад');
+define('LIB_SISTEM_TIME_MIN_AGO', ' мин. назад');
+define('LIB_SISTEM_TIME_HPUR_AGO', ' час. назад');
+define('LIB_SISTEM_TIME_YESTARDAY', 'Вчера в ');
 
-define('LIB_SISTEM_A_MINUTE_AGO', ' минуту назад');
-define('LIB_SISTEM_MINUTES_AGO', ' минуты назад');
-define('LIB_SISTEM_A_MINUTES_AGO', ' минут назад');
-
-define('LIB_SISTEM_AN_HOUR_AGO', ' час назад');
-define('LIB_SISTEM_HOURS_AGO', ' часа назад');
-define('LIB_SISTEM_AN_HOURS_AGO', ' часов назад');
-
-define('LIB_SISTEM_A_DAY_AGO', ' день назад');
-define('LIB_SISTEM_DAYS_AGO', ' дня назад');
-define('LIB_SISTEM_A_DAYS_AGO', ' дней назад');
+define('LIB_SISTEM_TIME_JANUARY', 'января');
+define('LIB_SISTEM_TIME_FEBRUARY', 'февраля');
+define('LIB_SISTEM_TIME_APRIL', 'марта');
+define('LIB_SISTEM_TIME_MARCH', 'апреля');
+define('LIB_SISTEM_TIME_MAY', 'мая');
+define('LIB_SISTEM_TIME_JUNE', 'июня');
+define('LIB_SISTEM_TIME_JULY', 'июля');
+define('LIB_SISTEM_TIME_AUGUST', 'августа');
+define('LIB_SISTEM_TIME_SEPTEMBER', 'сентября');
+define('LIB_SISTEM_TIME_OCTOBER', 'октября');
+define('LIB_SISTEM_TIME_NEVEMBER', 'ноября');
+define('LIB_SISTEM_TIME_DECEMBER', 'декабря');
 
 define('LIB_SISTEM_SECOND', ' сек.  ');
 define('LIB_SISTEM_MINUTE', ' мин.  ');

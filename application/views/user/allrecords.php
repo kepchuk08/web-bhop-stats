@@ -24,8 +24,8 @@
 			      				<img src="<?php echo $steamapi['avatarfull'];?>" class="rounded mx-auto d-block">
 			      			</div>
 			      			<div class="col-12 user-info">
-			      				<?php echo $sistem->userStatus($steamapi['personastate']);?>
-			      				<?php echo $sistem->VacBanInfo($vac);?>
+			      				<?php echo $system->userStatus($steamapi['personastate']);?>
+			      				<?php echo $system->VacBanInfo($vac);?>
 			      				<p><a class="text-color-green" href="<?php echo $steamapi['profileurl'];?>" target="_blank"><i class="fab fa-steam"></i><?=VI_USER_INDEX_PROFILE?></a></p>
 			      			</div>
 			      		</div>
@@ -63,17 +63,17 @@
 						</thead>
 						<tbody class="table-tr">
 							<?php foreach ($allrecords as $allrecordsItem):?>
-								<tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="<?php echo $sistem->corectDate($allrecordsItem['date'])['title'] ;?>">
+								<tr data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="<?php echo $system->expand_date($allrecordsItem['date']) ;?>">
 									<td><a class="table-a" href="/maps/<?php echo $allrecordsItem['map'];?>"><?php echo $allrecordsItem['map'];?></a></td>
-									<td class="text-center"><?php echo $sistem->corectDate($allrecordsItem['date'])['datediff'];?></td>
-									<td class="text-center"><?php echo $sistem->secToStr(round($allrecordsItem['time']));?></td>
-									<td class="text-center"><?php echo $sistem->track($allrecordsItem['track']);?></td>
+									<td class="text-center"><?php echo $system->expand_date($allrecordsItem['date'], 5);?></td>
+									<td class="text-center"><?php echo $system->secToStr(round($allrecordsItem['time']));?></td>
+									<td class="text-center"><?php echo $system->track($allrecordsItem['track']);?></td>
 									<td class="text-center">
 										<?php
-							    			if (empty($sistem->style()[$allrecordsItem['style']])) {
+							    			if (empty($system->style()[$allrecordsItem['style']])) {
 							    				echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';
 							    			}else{
-							    				echo $sistem->style()[$allrecordsItem['style']]['name'];
+							    				echo $system->style()[$allrecordsItem['style']];
 							    			}
 										?>
 											

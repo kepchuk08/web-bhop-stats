@@ -8,12 +8,11 @@
 namespace application\controllers;
 
 use application\core\Controller;
-use application\lib\Sistem;
 use application\lib\Pagination;
 use application\lib\SxGeo;
 use application\lib\SteamAPI;
 use application\models\User;
-
+use application\lib\System;
 
 class MainController extends Controller
 {
@@ -32,14 +31,14 @@ class MainController extends Controller
 		$position = $id * $page;
 
 		$SxGeo = new SxGeo('application/lib/SxGeo.dat', SXGEO_BATCH | SXGEO_MEMORY); 
-		$sistem = new Sistem;
+		$system = new System;
 
 		$pagination = new Pagination($this->route, $this->model->userCount());
 		$vars = [
 			'users' => $this->model->getUsers($this->route),
 			'id' => $position,
 			'statisticServer' => $this->model->statisticServer(),
-			'sistem' => $sistem,
+			'system' => $system,
 			'pagination' => $pagination->get(),
 			'sxgeo' => $SxGeo,
 		];
@@ -49,14 +48,14 @@ class MainController extends Controller
 
 	public function lastrocordsAction()
 	{
-		$sistem = new Sistem;
+		$system = new System;
 		$User = new User;
 
 		$vars = [
 			'statisticServer' => $this->model->statisticServer(),
-			'sistem' => $sistem,
+			'system' => $system,
 			'lastrecords' => $this->model->lastrecords(),
-			'style' => $sistem->style(),
+			'style' => $system->style(),
 		];
 
 		$this->view->render(LASTRECORDS,$vars);
@@ -65,14 +64,14 @@ class MainController extends Controller
 	public function searchAction()
 	{
 		$SxGeo = new SxGeo('application/lib/SxGeo.dat', SXGEO_BATCH | SXGEO_MEMORY); 
-		$sistem = new Sistem;
+		$system = new System;
 		
 		$search = $this->route['value'];
 
 		$vars = [
 			'search' => rawurldecode($search),
 			'user' => $this->model->search(rawurldecode($search)),
-			'sistem' => $sistem,
+			'system' => $system,
 			'statisticServer' => $this->model->statisticServer(),
 			'sxgeo' => $SxGeo,
 		];

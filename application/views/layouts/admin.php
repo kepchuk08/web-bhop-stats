@@ -17,6 +17,7 @@
     <script src="/public/js/sweetalert2.all.min.js"></script>
     <script src="/public/js/main.js"></script>
     <script src="/public/js/form.js"></script>
+    <script src="/public/js/ajax.js"></script>
     <script src="/public/js/popper.js"></script>
 </head>
 <body>
@@ -69,6 +70,5 @@
 
 	<script type="text/javascript" src="/public/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/public/js/bootstrap.bundle.min.js"></script>
-    
 </body>
 </html>

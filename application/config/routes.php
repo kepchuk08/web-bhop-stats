@@ -20,15 +20,15 @@ return [
 		'controller' => 'main',
 		'action' => 'lastrocords',
 	],
-	'user/{auth:\d+}' => [
+	'user/{auth:[0-9/-]+}' => [
 		'controller' => 'user',
 		'action' => 'index',
 	],
-	'user/{auth:\d+}/allrecords' => [
+	'user/{auth:[0-9/-]+}/allrecords' => [
 		'controller' => 'user',
 		'action' => 'allrecords',
 	],
-	'user/{auth:\d+}/style-{style:\d+}' => [
+	'user/{auth:[0-9/-]+}/style-{style:\d+}' => [
 		'controller' => 'user',
 		'action' => 'allstyle',
 	],
@@ -87,10 +87,6 @@ return [
 	'admin/admins' => [
 		'controller' => 'admin',
 		'action' => 'admins',
-	],
-	'admin/admins/delete/{adminid:\d+}' => [
-		'controller' => 'admin',
-		'action' => 'delete',
 	],
 	'install' => [
 		'controller' => 'install',

@@ -20,10 +20,10 @@
 							<td class="text-center"><?php echo $mapItem['count_map_rec'];?></td>
 							<td class="text-center">
 								<?php
-									if (empty($style[$sistem->popularStyle($mapItem['map'])])) {
+									if (empty($style[$system->popularStyle($mapItem['map'])])) {
 										echo '<i class="fas fa-frog" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="'.ERROR_STYLE_TITLE.'"></i>';
 									}else{
-										echo $style[$sistem->popularStyle($mapItem['map'])]['name'];
+										echo $style[$system->popularStyle($mapItem['map'])];
 									}
 								?>
 							</td>
